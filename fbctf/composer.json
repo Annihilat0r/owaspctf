@@ -1,0 +1,20 @@
+{
+    "name": "facebook/fbctf",
+    "description": "Facebook CTF platform",
+    "license": "CC-BY-NC-4.0",
+    "require": {
+        "facebook/xhp-lib": "2.x",
+        "facebook/graph-sdk": "5.x",
+        "google/apiclient": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/dbunit": "^2.0",
+        "phpunit/php-code-coverage": "^3.3.0",
+        "phpunit/php-invoker": "1.1.*",
+        "phpunit/phpunit": "^5.3.0"
+    },
+    "autoload": {
+        "classmap": ["src/", "tests/"],
+        "files": ["src/Utils.php", "src/language/language.php"]
+    }
+}

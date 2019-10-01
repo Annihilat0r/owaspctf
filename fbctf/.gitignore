@@ -1,0 +1,41 @@
+# Composer libraries
+/vendor
+/reports
+
+# NPM modules
+/node_modules
+
+# Sass cache
+.sass-cache
+
+# HHVM files
+www.pid
+
+# Configuration files
+*.ini
+!tests/server.ini
+
+# Vagrant Artifacts
+.vagrant
+.sources
+*.log
+
+# OS artifacts
+.DS_Store
+
+# Editors
+*~
+\#*\#
+*.swp
+*.swn
+*.swo
+
+# Attachments directory
+attachments/*
+!attachments/index.php
+attachments/deleted/*
+!attachments/deleted/index.php
+
+# Custom logos directory
+src/data/customlogos/*
+!src/data/customlogos/index.php

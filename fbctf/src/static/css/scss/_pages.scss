@@ -1,0 +1,193 @@
+/* ==============================================================
+   * Pages
+   *
+   * more specific page styles
+   ============================================================== */
+
+/* --------------------------------------------
+ * --
+ * -------------------------------------------- */
+
+.page--landing,
+.page--game-status,
+.page--mobile {
+  background: url(../img/bg--world.png) top center no-repeat;
+  background-size: auto 60vh;
+}
+
+.page--mobile {
+  background-size: 960px;
+  background-position: -80px -80px;
+}
+
+/* --------------------------------------------
+ * --registration
+ * -------------------------------------------- */
+
+.page--registration,
+.page--team-registration {
+  .custom-emblem {
+    text-align: center;
+    #custom-emblem-input {
+      display: none;
+    }
+    #custom-emblem-preview {
+      &[src=""] {
+        display: none;
+      }
+      margin-top: 20px;
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+  #custom-emblem-carousel-notice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    display: none;
+    .center-wrapper {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+    h6 {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+    &.active {
+      display: block;
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --blog
+ * -------------------------------------------- */
+
+.page--blog {
+  background-color: $black;
+
+  .fb-section-header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+/* --------------------------------------------
+ * --rules
+ * -------------------------------------------- */
+.page--rules {
+  background-color: $black;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.fb-rules {
+  position: relative;
+  border-top: 1px solid lighten($black, 15%);
+  margin-top: 20px;
+  padding-top: 40px;
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  .rule-section-header {
+    margin-bottom: 1em;
+  }
+
+  ul {
+    @include purista-bold;
+
+    color: $teal-blue;
+    list-style-type: disc;
+    padding-left: 2em;
+  }
+}
+
+.rules--table-of-contents {
+  padding-top: 1em;
+
+  li {
+    padding: 4px 0;
+
+    @include purista-bold;
+  }
+}
+
+/* --------------------------------------------
+ * --terms/conditions
+ * -------------------------------------------- */
+
+.page--terms-conditions .fb-actionable {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  a + a {
+    margin-left: 20px;
+  }
+}
+
+/* --------------------------------------------
+ * --careers
+ * -------------------------------------------- */
+
+.fb-careers-list {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  li {
+    padding: 20px;
+  }
+
+  article {
+    background-color: $main-blue;
+    border-radius: $border-radius;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.fb-job {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  header {
+    background-repeat: no-repeat;
+    background-position: top center;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    h3 {
+      color: $yellow;
+    }
+  }
+
+  &.job--infosec header {
+    background-size: 70px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2069.6%2097.5%22%3E%3Cpath%20opacity%3D%22.1%22%20fill%3D%22%23D4EEF3%22%20d%3D%22M65.1%2044.6H60V25.1C59.9%2011.2%2048.7%200%2034.8%200S9.7%2011.2%209.7%2025.1v19.5H4.6c-2.5%200-4.6%202-4.6%204.6V93c0%202.5%202%204.6%204.6%204.6h60.5c2.5%200%204.6-2%204.6-4.6V49.2c-.1-2.5-2.1-4.6-4.6-4.6zm-14.9%200H19.4v-18c0-8.5%206.9-15.4%2015.4-15.4s15.4%206.9%2015.4%2015.4v18z%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  &.job--developer header {
+    background-size: 136px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20136.7%20111%22%3E%3Cg%20opacity%3D%22.1%22%20fill%3D%22%23D4EEF3%22%3E%3Cpath%20d%3D%22M91.6%2062.7l-1.4-8.2-12.4-2-3.9-6.5%204.5-11.8-6.4-5.4-10.8%206.4-7.1-2.6L50%2020.8h-8.3l-4.2%2011.9-7.1%202.6-10.8-6.4-6.4%205.3L17.6%2046l-3.8%206.5-12.4%202L0%2062.7l11%206.2%201.3%207.4-8.2%209.6%204.2%207.2%2012.4-2.3%205.8%204.8-.2%2012.6%207.8%202.8%208-9.8h7.5l8%209.8%207.8-2.8-.2-12.6%205.8-4.8%2012.4%202.3%204.2-7.2-8.2-9.6%201.3-7.4%2010.9-6.2zm-36.1%203.9c0%205.4-4.3%209.7-9.7%209.7s-9.7-4.3-9.7-9.7c0-5.4%204.3-9.7%209.7-9.7s9.7%204.3%209.7%209.7z%22%2F%3E%3Cpath%20d%3D%22M129%2027.5l7.7-8.7-4.2-7.2-11.3%202.4-5.1-3-3.7-11H104l-3.7%2011-5.1%203-11.4-2.3-4.2%207.2%207.7%208.7v5.9l-7.7%208.7%204.2%207.2L95.2%2047l5.1%203%203.7%2011h8.3l3.7-11%205.1-3%2011.4%202.3%204.2-7.2-7.7-8.7v-5.9zm-27.7%203c0-3.8%203.1-6.9%206.9-6.9%203.8%200%206.9%203.1%206.9%206.9s-3.1%206.9-6.9%206.9c-3.8%200-6.9-3.1-6.9-6.9z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+}
+
+.page--job-detail .job-description {
+  padding-left: 40px;
+  border-left: 1px solid $blue-border;
+}
+
+/* --------------------------------------------
+ * --game status (upcoming game / game over)
+ * -------------------------------------------- */
+.page--game-status .fb-form {
+  margin-top: 2em;
+}

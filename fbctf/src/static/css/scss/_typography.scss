@@ -1,0 +1,1004 @@
+/* ==============================================================
+   * typography
+   *
+   * includes all typographic styles in the buildkit, including
+   *  the fonts, headers, links, etc.
+   ============================================================== */
+
+/* --------------------------------------------
+ * --font face
+ * -------------------------------------------- */
+
+/**
+ * --purista
+ */
+
+// purista bold
+//  - navigation branding
+@font-face {
+  font-family: 'puristabold';
+  src: url("fonts/purista_bold.woff2") format("woff2"), url("fonts/purista_bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// purista light
+//  - h1's
+@font-face {
+  font-family: 'puristalight';
+  src: url("fonts/purista_light.woff2") format("woff2"), url("fonts/purista_light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// purista regular/medium
+//   - radio labels
+@font-face {
+  font-family: 'puristaregular';
+  src: url("fonts/purista_medium.woff2") format("woff2"), url("fonts/purista_medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'puristasemibold';
+  src: url("fonts/purista_semibold.woff2") format("woff2"), url("fonts/purista_semibold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * --carbon
+ */
+@font-face {
+  font-family: 'carbon_plus';
+  src: url("fonts/carbonplus_regular.woff2") format("woff2"), url("fonts/carbonplus_regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * --source code pro
+ */
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700,300);
+
+/* --------------------------------------------
+ * --headers
+ * -------------------------------------------- */
+
+/**
+ * - "conquer the world"
+ */
+h1 {
+  @include purista-light;
+
+  font-size: 3.375em;
+  padding-bottom: .5em;
+  color: $teal-blue;
+}
+
+/**
+ * - page and modal headers
+ */
+h2 {
+  @include purista-light;
+
+  font-size: 2.25em;
+  padding-bottom: .5em;
+  color: $teal-blue;
+}
+
+/**
+ * - footer headers ("Life at Facebook", "Blog")
+ * - Careers titles
+ * - Post stream titles
+ */
+h3 {
+  @include purista-bold;
+
+  font-size: 1.375em;
+  color: $teal-blue;
+}
+
+/**
+ * alt for an h4
+ * --"Upcoming Game", "Game Over"
+ */
+.title-lead {
+  color: $light-blue;
+}
+
+/**
+ * - modal titles, including tutorial titles
+ */
+h4 {
+  font-size: 1.75em;
+}
+
+/**
+ * - sidebar section titles
+ */
+
+h5 {
+  @include purista-bold;
+
+  color: $light-blue;
+  font-size: 1.125em;
+}
+
+/**
+ * - subheaders ("We're hiring", "Post your experience")
+ * - tab titles
+ * - blog - "Pinned Post"
+ * - blog - author name
+ * - module header titles
+ */
+h6 {
+  @include purista-bold;
+
+  font-size: 1em;
+}
+
+/* --------------------------------------------
+ * --type styles
+ * -------------------------------------------- */
+
+p + p {
+  margin-top: 1em;
+}
+
+strong {
+  @include source-code-bold;
+}
+
+a {
+  text-decoration: none;
+  color: $teal-blue;
+}
+
+a.alt-link {
+  color: $yellow;
+}
+
+a.interaction {
+  color: $yellow;
+
+  @include purista-bold;
+}
+
+.your-name,
+.highlighted,
+.highlighted--yellow {
+  color: $yellow;
+}
+
+.opponent-name,
+.highlighted--red {
+  color: $red;
+}
+
+.highlighted--blue {
+  color: $teal-blue;
+}
+
+.highlighted--green {
+  color: #00cc00;
+}
+
+.fb-numbers {
+  @include carbon;
+}
+
+a[data-hover] {
+  position: relative;
+
+  &:after {
+    content: attr(data-hover);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+
+    @include translate(0, -50%);
+
+    text-align: center;
+    visibility: hidden;
+    font-size: .9em;
+  }
+
+  &.active span,
+  &:hover span {
+    visibility: hidden;
+  }
+
+  &.active:after,
+  &:hover:after {
+    visibility: visible;
+  }
+}
+
+/**
+ * --actionable section
+ * the div containing cta's
+ */
+.fb-actionable:not(.align-left) {
+  text-align: center;
+}
+
+p + .fb-actionable,
+ul + .fb-actionable {
+  margin-top: 2em;
+}
+
+.fb-actionable > a {
+  vertical-align: middle;
+}
+
+/**
+ * --calls to action
+ */
+.fb-cta {
+  @include purista-semibold;
+
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-size: 1.25em;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $teal-blue;
+  color: $teal-blue;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 26px;
+  border-radius: $border-radius;
+  background-color: transparent;
+
+  @include transition(background-color 0.5s, color 0.5s);
+
+  &:hover {
+    @include animation(hover-pulse-blue 1s linear 0.5s infinite);
+  }
+
+  &:hover,
+  &.active {
+    background-color: $teal-blue;
+    color: $main-blue;
+  }
+}
+
+.fb-cta.cta--yellow {
+  color: $yellow;
+  border-color: $yellow;
+
+  &:hover {
+    @include animation(hover-pulse-yellow 1s linear 0.5s infinite);
+  }
+
+  &:hover,
+  &.active {
+    color: $main-blue;
+    background-color: $yellow;
+  }
+}
+
+.fb-cta.cta--red {
+  color: $red;
+  border-color: $red;
+
+  &:hover {
+    @include animation(hover-pulse-red 1s linear 0.5s infinite);
+  }
+
+  &:hover,
+  &.active {
+    color: $main-blue;
+    background-color: $red;
+  }
+}
+
+.fb-cta.cta--light-blue {
+  color: $light-blue;
+  border-color: $light-blue;
+
+  &:hover,
+  &.active {
+    color: $main-blue;
+    background-color: $light-blue;
+  }
+}
+
+/**
+ * --paragraphs and stuff
+ */
+.typed-text,
+.boot-sequence {
+  display: none;
+
+  &.typing-initialized {
+    display: block;
+  }
+}
+
+/**
+ * --glitch
+ */
+h1.fb-glitch {
+  @include textGlitch("glitch", 17, $teal-blue, $black, 820, 115, infinite);
+}
+
+/**
+ * --click effects
+ */
+.click-effect > span:before,
+.click-effect > span:after {
+  content: "";
+  box-shadow: 0 0 0 2px rgba(111, 148, 182, 0.5);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: -30px 0 0 -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.click-effect.clicked > span::before {
+  @include animation(click-effect-inner 0.5s forwards);
+}
+
+.click-effect.clicked > span::after {
+  @include animation(click-effect-outer 0.5s forwards);
+}
+
+/**
+ * --tables
+ */
+table {
+  width: 100%;
+
+  th, td {
+    padding: 6px;
+  }
+
+  th {
+    text-align: left;
+    color: $yellow;
+  }
+
+  td {
+    font-size: 1.2em;
+
+    @include purista-medium;
+  }
+
+  tr:nth-child(even) td {
+    color: $teal-blue;
+  }
+}
+
+/**
+ * --point circles
+ */
+.points-display {
+  @include flexbox;
+
+  @include align-center;
+
+  -webkit-justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid $teal-blue;
+  border-radius: 50%;
+  text-align: center;
+  color: $yellow;
+  width: 80px;
+  height: 80px;
+
+  .points-number {
+    font-size: 3em;
+    display: block;
+    line-height: 1;
+  }
+
+  .points-label {
+    font-size: .8em;
+    text-transform: uppercase;
+  }
+}
+
+/* --------------------------------------------
+ * inactive country
+ * -------------------------------------------- */
+.inactive-country {
+  font-family: 'puristasemibold', Courier, monospace;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: #f00;
+  font-size: 2em;
+  display: block;
+}
+
+/* --------------------------------------------
+ * --status spans
+ * -------------------------------------------- */
+
+.fb-status {
+  position: relative;
+  padding-left: 24px;
+  display: inline-block;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -9px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+
+  &.status--open {
+    color: $teal-blue;
+
+    &:before {
+      border: 2px solid $teal-blue;
+      border-radius: 50%;
+    }
+  }
+
+  &.status--opponent {
+    color: $red;
+
+    &:before {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2010.9%2010.4%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23f00%22%20stroke-width%3D%221.211%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M.6%209.7L5.4.6h.1l4.8%209.1H.6z%22%2F%3E%3C%2Fsvg%3E");
+    }
+  }
+
+  &.status--yours {
+    color: $yellow;
+
+    &:before {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2010.9%2010.4%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23ead44d%22%20stroke-width%3D%221.211%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M.6%209.7L5.4.6h.1l4.8%209.1H.6z%22%2F%3E%3C%2Fsvg%3E");
+    }
+  }
+
+  &.status--give-help:before,
+  &.status--incoming-help:before {
+    content: "";
+    line-height: 13px;
+    font-size: 12px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+  }
+
+  &.status--give-help {
+    color: $red;
+
+    &:before {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2013.5%2013.5%22%3E%3Cstyle%3E.st0%7Bfill%3Anone%3Bstroke%3A%23ED2224%3Bstroke-miterlimit%3A10%3B%7D%20.st1%7Bfill%3A%23ED2224%3B%7D%3C%2Fstyle%3E%3Ccircle%20class%3D%22st0%22%20cx%3D%226.7%22%20cy%3D%226.7%22%20r%3D%226.2%22%2F%3E%3Cpath%20class%3D%22st1%22%20d%3D%22M5.9%207.9v-.6c.1-.2.2-.4.3-.5.1-.1.2-.3.4-.4.1-.1.3-.2.4-.3l.3-.3c.1-.1.1-.2.1-.4s-.1-.4-.2-.5c-.2-.1-.4-.2-.6-.2-.2%200-.4%200-.6.1s-.3.3-.5.4l-.8-.8c.2-.3.5-.5.9-.7.3-.2.7-.3%201.1-.3.3%200%20.6%200%20.8.1.3.2.5.3.7.4.2.1.3.3.5.5.1.2.2.5.2.7%200%20.2%200%20.4-.1.6-.2.2-.3.4-.4.5-.1.2-.3.3-.4.4s-.3.2-.4.4c-.1.1-.2.2-.3.4s-.1.3%200%20.5H5.9zm-.3%201.7c0-.3.1-.6.3-.7s.4-.3.7-.3.5.1.7.3.3.4.3.7c0%20.3-.1.6-.3.8-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.2-.2-.3-.5-.3-.8z%22%2F%3E%3C%2Fsvg%3E");
+    }
+  }
+
+  &.status--incoming-help {
+    color: $yellow;
+
+    &:before {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2013.5%2013.5%22%3E%3Cstyle%3E.st0%7Bfill%3Anone%3Bstroke%3A%23E9D44E%3Bstroke-miterlimit%3A10%3B%7D%20.st1%7Bfill%3A%23E9D44E%3B%7D%3C%2Fstyle%3E%3Ccircle%20class%3D%22st0%22%20cx%3D%226.7%22%20cy%3D%226.7%22%20r%3D%226.2%22%2F%3E%3Cpath%20class%3D%22st1%22%20d%3D%22M5.7%209.8c0-.3.1-.6.3-.8s.5-.3.8-.3c.3%200%20.6.1.8.3.2.2.3.5.3.8s-.1.6-.3.8c-.2.2-.5.3-.8.3-.3%200-.6-.1-.8-.3s-.3-.5-.3-.8zm.3-5V3.3h1.6l-.1%201.5L7.3%208H6.2L6%204.8z%22%2F%3E%3C%2Fsvg%3E");
+    }
+  }
+
+  &.status--timer {
+    @include carbon;
+
+    padding: 4px 20px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    border: 1px solid $red;
+    color: $light-blue;
+
+    &.timer--expired {
+      border-color: $teal-blue;
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --definitions
+ * -------------------------------------------- */
+
+dt {
+  color: $yellow;
+  font-size: .9em;
+}
+
+dd {
+  font-size: 1.1em;
+
+  &.country-owner {
+    span {
+      @include purista-medium;
+
+      padding-left: 20px;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 12px;
+
+      &.opponent-name {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2010.9%2010.4%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23ED2224%22%20stroke-width%3D%221.211%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M.6%209.7L5.4.6h.1l4.8%209.1H.6z%22%2F%3E%3C%2Fsvg%3E");
+      }
+
+      &.your-name {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-300%20391.6%2010.9%2010.4%22%3E%3Cpath%20fill%3D%22%23EAD44D%22%20d%3D%22M-299.4%20401.3l4.8-9.1h.1l4.8%209.1h-9.7z%22%2F%3E%3C%2Fsvg%3E");
+      }
+    }
+  }
+
+  & + dt {
+    margin-top: 1em;
+  }
+}
+
+/* --------------------------------------------
+ * --form
+ * -------------------------------------------- */
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+/**
+ * --the radio-like form elements
+ */
+input[type="radio"] + label,
+.el--radio input[type="checkbox"] + label {
+  @include radios;
+
+  font-size: .86em;
+}
+
+input[type="radio"]:checked + label:before,
+.el--radio input[type="checkbox"]:checked + label:before {
+  display: block;
+}
+
+/**
+ * --toggle checkboxes - cta
+ */
+.cta-toggle {
+  display: inline-block;
+  font-size: .8em;
+  margin-bottom: 10px;
+
+  input[type="checkbox"] + label {
+    @extend .fb-cta;
+  }
+
+  input[type="checkbox"]:checked + label {
+    background-color: $teal-blue;
+    color: $main-blue;
+  }
+}
+
+.form-el--actions {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.form-el--multiple-actions .actions--right {
+  text-align: right;
+}
+
+.form-el--footer {
+  @include source-code-bold;
+
+  font-size: 1.125em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+/**
+ * --text
+ */
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+.dk-selected,
+textarea {
+  @include source-code-regular;
+
+  min-width: 80px;
+  background-color: transparent;
+  border: 1px solid $teal-blue;
+  border-radius: $border-radius;
+  color: $light-blue;
+  padding: 6px;
+  font-size: $text-size;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  max-height: 300px;
+}
+
+.fb-search input[type="search"] {
+  display: block;
+  width: 100%;
+}
+
+.fb-form {
+  padding-top: 1em;
+}
+
+.form-set {
+  margin: 1em 0;
+
+  &.form-set--inline .fb-column-container {
+    justify-content: center;
+
+    input[type="text"],
+    input[type="password"] {
+      width: 325px;
+    }
+
+    .form-el + .form-el {
+      margin-left: 20px;
+    }
+  }
+}
+
+.form-set:not(.form-set--inline) .form-el + .form-el,
+.el--helper {
+  margin-top: .5em;
+}
+
+.el--block-label > label {
+  display: block;
+
+  @include purista-medium;
+
+  padding-bottom: 10px;
+}
+
+/**
+ * --errors
+ */
+.form-error {
+  label {
+    color: $red;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    color: $red;
+    border-color: $red;
+  }
+}
+
+.error-msg {
+  color: $red;
+}
+
+/**
+ * --select
+ */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+}
+
+.dk-select, .dk-select-multi {
+  position: relative;
+  cursor: pointer;
+}
+
+.dk-selected {
+  overflow: hidden;
+  position: relative;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: $teal-blue;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 8px;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 4px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2011.2%205.6%22%3E%3Cpath%20stroke%3D%22%2321b4ba%22%20fill%3D%22none%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M10.9.4L5.9%205c-.2.2-.4.2-.5%200L.4.3%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+
+.dk-selected-disabled {
+  color: #BBBBBB;
+}
+
+.dk-select .dk-select-options {
+  position: absolute;
+  display: none;
+  left: 0;
+  right: 0;
+}
+
+.dk-select-open-up .dk-select-options {
+  margin-bottom: -1px;
+  bottom: 100%;
+}
+
+.dk-select-open-down .dk-select-options {
+  margin-top: -1px;
+  top: 100%;
+}
+
+.dk-select-multi .dk-select-options {
+  max-height: 10em;
+}
+
+.dk-select-options {
+  background-color: $main-blue;
+  border: 1px solid $teal-blue;
+  list-style: none;
+  margin: 0;
+  max-height: 10.5em;
+  min-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.25em 0;
+  width: auto;
+  z-index: 100;
+
+  li {
+    padding: 4px;
+  }
+}
+
+.dk-select-options .dk-option-highlight {
+  background-color: $teal-blue;
+  color: #fff;
+}
+
+.dk-option-selected {
+  background-color: $main-blue-darken;
+  border-right: 1px solid $teal-blue;
+  color: #fff;
+}
+
+.dk-optgroup {
+  border: solid #CCCCCC;
+  border-width: 1px 0;
+  padding: 0.25em 0;
+  margin-top: 0.25em;
+}
+
+.dk-optgroup-label {
+  padding: 0 0.5em 0.25em;
+  font-weight: bold;
+  width: 100%;
+}
+
+.dk-optgroup-options {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding-left: 1.2em;
+  }
+}
+
+.dk-select-open-up .dk-selected {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.dk-select-open-down .dk-selected {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dk-select-open-up .dk-select-options,
+.dk-select-open-down .dk-select-options,
+.dk-select-multi:focus .dk-select-options {
+  display: block;
+}
+
+.dk-select-multi:hover, .dk-select-multi:focus,
+.dk-selected:hover, .dk-selected:focus {
+  outline: none;
+}
+
+.dk-select-disabled {
+  opacity: 0.6;
+  color: #BBBBBB;
+  cursor: not-allowed;
+}
+
+select[data-dkcacheid] {
+  display: none;
+}
+
+/**
+ * --text
+ */
+.el--text {
+  @include flexbox;
+
+  @include align-center;
+
+  label {
+    @include purista-medium;
+
+    @include flex(0 1 160px);
+
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"] {
+    @include flex(1 0 auto);
+  }
+
+  &.el--single {
+    margin: 0 auto;
+    max-width: 480px;
+
+    label {
+      @include flex(0 1 auto);
+    }
+  }
+}
+
+.el--full-text {
+  input[type="text"],
+  input[type="number"],
+  input[type="password"] {
+    display: block;
+    width: 100%;
+  }
+}
+
+/**
+ * --radios
+ */
+
+.el--radio {
+  margin-left: 160px;
+}
+
+.radio-inline,
+.radio-list,
+.el--radio {
+  label {
+    padding-left: 28px;
+
+    &.click-effect span:before,
+    &.click-effect span:after {
+      top: 50%;
+      left: 0;
+      margin-left: -22px;
+    }
+
+    &:after, &:before {
+      top: 50%;
+    }
+
+    &:after {
+      left: 0;
+      margin-top: -8px;
+    }
+
+    &:before {
+      left: 4px;
+      margin-top: -4px;
+    }
+  }
+}
+
+/**
+ * --radio inline
+ */
+.radio-inline label {
+  @include purista-bold;
+
+  padding-left: 22px;
+  color: $yellow;
+  font-size: .8em;
+
+  & ~ label {
+    margin-left: 10px;
+  }
+}
+
+/**
+ * --radio list
+ */
+.radio-list li {
+  @include purista-medium;
+
+  padding: 4px 0;
+}
+
+.list-header {
+  padding-bottom: 8px;
+  display: block;
+}
+
+/**
+ * --radio tabs
+ */
+.radio-tabs {
+  border-top: 2px solid $teal-blue;
+  text-align: center;
+  margin-top: 20px;
+
+  label {
+    padding: 20px 6px 0;
+
+    @include purista-bold;
+
+    color: $teal-blue;
+
+    &:after, &:before {
+      left: 50%;
+    }
+
+    &:after {
+      top: -8px;
+      margin-left: -8px;
+    }
+
+    &:before {
+      top: -4px;
+      margin-left: -4px;
+    }
+  }
+
+  input[type="radio"]:checked + label {
+    color: $yellow;
+  }
+}
+
+.radio-tab-content {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

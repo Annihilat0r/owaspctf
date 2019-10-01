@@ -1,0 +1,154 @@
+/* ==============================================================
+   * Icons
+   *
+   * All the svg icon classes
+   ============================================================== */
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-text {
+  vertical-align: middle;
+}
+
+.has-icon {
+  vertical-align: middle;
+}
+
+.icon--close {
+  width: 20px;
+  height: 20px;
+  stroke: $teal-blue;
+
+  &:hover {
+    stroke: $light-blue;
+  }
+}
+
+.icon--chevron-down {
+  width: 20px;
+  height: 20px;
+  stroke: $light-blue;
+}
+
+.icon--badge {
+  fill: none;
+  stroke: $teal-blue;
+  max-width: 80px;
+  max-height: 62px;
+  height: auto;
+}
+
+.icon--mini {
+  fill: none;
+  stroke: #21b4ba;
+  width: 45px;
+  height: auto;
+}
+
+.icon--arrow-up,
+.icon--arrow-down {
+  fill: none;
+  stroke: $teal-blue;
+  width: 16px;
+  height: 15px;
+  cursor: pointer;
+  fill: transparent;
+
+  @include transition(fill 0.2s);
+}
+
+.icon--arrow-up:hover,
+.icon--arrow-down:hover {
+  fill: $teal-blue;
+
+  @include animation(hover-pulse-blue-arrows 1s linear 0.2s infinite);
+}
+
+.icon--play {
+  fill: none;
+  stroke: $yellow;
+  width: 94px;
+  height: 94px;
+}
+
+.icon--globe {
+  width: 68px;
+  height: 68px;
+}
+
+.icon--country-mexico--captured {
+  width: 75px;
+  height: 49px;
+}
+
+.icon--country-australia--captured {
+  width: 141px;
+  height: 124px;
+}
+
+.icon--country-group--europe {
+  width: 120px;
+  height: 120px;
+}
+
+.icon--tutorial--zoom {
+  width: 70px;
+  height: 31px;
+}
+
+.icon--team-indicator {
+  width: 10px;
+  height: 10px;
+
+  .fb-map-select & {
+    margin-right: 6px;
+    margin-top: -2px;
+  }
+
+  &.your-team {
+    fill: $yellow;
+  }
+
+  &.opponent-team {
+    stroke: $red;
+    stroke-width: 2;
+  }
+}
+
+.icon--pinned-post {
+  width: 15px;
+  height: 36px;
+  fill: $black;
+  stroke: $yellow;
+  stroke-width: 1;
+}
+
+/**
+ * --social
+ */
+svg[class*="icon--social"] {
+  width: 20px;
+  height: 20px;
+  fill: $light-blue;
+
+  .fb-cta & {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: -2px;
+  }
+
+  &.icon--social-email {
+    width: 30px;
+    stroke: $main-blue;
+  }
+
+  @include transition(fill 0.5s);
+
+  .fb-cta:hover & {
+    fill: $main-blue;
+  }
+}

@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'iran_sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url("fonts/IRANSansWeb_Bold.eot");
+  src: url("fonts/IRANSansWeb_Bold.eot?#iefix") format("embedded-opentype"), url("fonts/IRANSansWeb_Bold.woff2") format("woff2"), url("fonts/IRANSansWeb_Bold.woff") format("woff"), url("fonts/IRANSansWeb_Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'iran_sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/IRANSansWeb_Light.eot");
+  src: url("fonts/IRANSansWeb_Light.eot?#iefix") format("embedded-opentype"), url("fonts/IRANSansWeb_Light.woff2") format("woff2"), url("fonts/IRANSansWeb_Light.woff") format("woff"), url("fonts/IRANSansWeb_Light.ttf") format("truetype");
+}
+
+
+:lang(fa){
+  direction: rtl;
+  font-family: 'iran_sans';
+}
+
+:lang(en) {
+  direction: ltr;
+}
+
+
+.sina-bold {
+  font-family: 'b sina', 'b titr' , 'iran_sans', 'tahoma'; 
+}
+
+h1.fb-glitch {
+  font-family: 'b sina', 'b titr' , 'iran_sans', 'tahoma';
+}
+
+table th {
+	text-align: right;
+}
+.dk-selected:before {
+	left: 4px;
+	right: auto;
+}
+
+/* _admin.scss line 366 */
+.admin-buttons button + button {
+    margin-right: 20px;
+}
+
+/* _gameboard.scss line 147 */
+.fb-gameboard aside[data-module] .module-header {
+    padding: 6px 26px 6px 10px;
+}
+
+/* _gameboard.scss line 156 */
+.fb-gameboard aside[data-module] .module-header:before {
+    left: 0px;
+    right: 6px;
+}
+
+/* _gameboard.scss line 165 */
+.fb-gameboard aside[data-module] .module-header:after {
+	left: 6px;
+    right: 0px;
+}
+
+/* _gameboard.scss line 888 */
+.country-capture-stats .country-stats {
+  padding-left: 20px;
+}
+
+/* _gameboard.scss line 900 */
+.country-capture-completed .completed-list{
+	right: 50%;
+    left: 0;
+}
+
+/* _icons.scss line 102 */
+.fb-map-select .icon--team-indicator {
+    margin-left: 6px;
+    margin-top: -2px;
+}
+
+.error-log {
+    color: red;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.modal-title a {
+	left: 0;
+	right: auto;
+}
+
+.modal--popup .fb-modal-content .modal-title a {
+	left: 20px;
+	right: auto;
+}
+
+.action-main .action-actionable a + a {
+	margin-right: 20px;
+}
+.modal--team .js-launch-modal:after {
+	margin-right: .5em;
+	margin-left: auto;
+}
+

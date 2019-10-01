@@ -1,0 +1,49 @@
+version: '2'
+services:
+  mysql:
+    restart: always
+    build:
+      context: .
+      dockerfile: extra/mysql/Dockerfile
+      args:
+        MODE: prod
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    expose:
+      - "3306"
+
+  cache:
+    restart: always
+    build:
+      context: .
+      dockerfile: extra/cache/Dockerfile
+      args:
+        MODE: prod
+    expose:
+      - "11211"
+
+  hhvm:
+    restart: always
+    build:
+      context: .
+      dockerfile: extra/hhvm/Dockerfile
+      args:
+        MODE: prod
+    depends_on:
+      - mysql
+      - cache
+    expose:
+      - "9000"
+
+  nginx:
+    restart: always
+    build:
+      context: .
+      dockerfile: extra/nginx/Dockerfile
+      args:
+        MODE: prod
+    depends_on:
+      - hhvm
+    ports:
+      - "80:80"
+      - "443:443"

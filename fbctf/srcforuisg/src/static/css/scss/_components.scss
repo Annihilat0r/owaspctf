@@ -1,0 +1,735 @@
+/* ==============================================================
+   * Components
+   *
+   * more specific page components
+   ============================================================== */
+
+/* --------------------------------------------
+ * --sections
+ * -------------------------------------------- */
+
+/**
+ * --section with border
+ */
+.fb-section-border {
+  border: 2px solid $light-blue;
+  border-radius: $border-radius;
+  position: relative;
+  padding: 6px;
+  z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    border: 2px solid $teal-blue;
+    z-index: -1;
+  }
+
+  header {
+    padding-top: 10px;
+  }
+}
+
+/**
+ * --black background, scrollable
+ */
+.fb-black-section {
+  background-color: $black;
+  border-top: 1px solid $teal-blue;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/**
+ * --centered main
+ */
+.fb-centered-main {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* --------------------------------------------
+ * --countdowns
+ * -------------------------------------------- */
+
+/**
+ * --upcoming game
+ */
+.upcoming-game-countdown {
+  font-size: 1.1875em;
+  text-align: center;
+
+  li {
+    display: inline-block;
+
+    & + li {
+      margin-left: 4px;
+      padding-left: 14px;
+      border-left: 1px solid $light-blue;
+    }
+
+    .count-number {
+      color: $yellow;
+
+      @include source-code-bold;
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --header
+ * -------------------------------------------- */
+
+.fb-section-header {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  & + .fb-black-section {
+    margin-top: 20px;
+  }
+}
+
+/* --------------------------------------------
+ * --footer
+ * -------------------------------------------- */
+
+.fb-page-footer {
+  background: $black;
+
+  @include flexbox;
+
+  .footer-section {
+    padding: 20px;
+
+    header {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+  }
+
+  .section-outer {
+    @include flex(0 1 400px);
+  }
+
+  .section-inner {
+    @include flex(1 0 auto);
+  }
+
+  .fb-section-border h3 {
+    color: $light-blue;
+  }
+
+  .radio-tabs label ~ label {
+    margin-left: 40px;
+  }
+}
+
+/* --------------------------------------------
+ * --media
+ * -------------------------------------------- */
+
+.img-container {
+  position: relative;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include translate(-50%, -50%);
+  }
+}
+
+/* --------------------------------------------
+ * --sliders
+ * -------------------------------------------- */
+
+.bx-wrapper {
+  margin: 0 auto;
+
+  .bx-controls-direction {
+    a {
+      text-indent: -9999px;
+      position: absolute;
+      width: 14px;
+      height: 28px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: -50px;
+
+      &.bx-prev {
+        left: 130px;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2013%2027.9%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%237ED0E0%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M12.7.3L.7%2014l12%2013.6%22%2F%3E%3C%2Fsvg%3E");
+      }
+
+      &.bx-next {
+        right: 130px;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-299%20383.1%2013%2028%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%237ED0E0%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M-298.6%20383.4l12%2013.7-12%2013.6%22%2F%3E%3C%2Fsvg%3E");
+      }
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --command prompt
+ * -------------------------------------------- */
+.fb-command-line {
+  @include align-center;
+
+  &,
+  & input[type="text"] {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .js-close-modal {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    .icon {
+      display: block;
+    }
+  }
+
+  & > div {
+    flex-direction: column;
+    height: 360px;
+    position: relative;
+
+    ul {
+      width: 100%;
+
+      li {
+        margin: 10px 0;
+
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .command-list {
+    @include flex(0 0 140px);
+
+    border-right: 1px solid $teal-blue;
+    color: $red;
+
+    .command-prompt {
+      position: relative;
+      padding-left: 15px;
+      left: 0;
+      right: 0;
+      top: 0;
+      border-bottom: 1px solid $teal-blue;
+
+      &:before {
+        content: "/";
+        position: absolute;
+        left: 6px;
+        top: 50%;
+
+        @include translate(0, -50%);
+      }
+
+      input {
+        border: 0;
+        margin: 0;
+        display: block;
+        width: 100%;
+        color: $red;
+      }
+
+      .autocomplete {
+        position: absolute;
+        top: 8px;
+        left: 21px;
+        opacity: .4;
+      }
+    }
+
+    ul {
+      position: relative;
+      padding-left: 21px;
+
+      li {
+        opacity: .4;
+
+        &.selected {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .command-results {
+    @include flex(1 0 auto);
+
+    overflow: hiddden;
+
+    .results-filter {
+      position: relative;
+      border-bottom: 1px solid $teal-blue;
+
+      input {
+        display: block;
+        width: 100%;
+        border-radius: 0;
+        background-color: $main-blue;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+        border: 0;
+        padding-right: 40px;
+      }
+
+      .autocomplete {
+        position: absolute;
+        top: 8px;
+        left: 6px;
+        bottom: 8px;
+        opacity: .4;
+      }
+    }
+
+    ul {
+      padding: 4px 10px;
+      position: relative;
+
+      li.selected {
+        color: $yellow;
+      }
+
+      li:hover {
+        cursor: pointer;
+      }
+
+      li.hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --alerts
+ * -------------------------------------------- */
+
+.alert:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2013.5%2013.5%22%3E%3Cstyle%3E.st0%7Bfill%3Anone%3Bstroke%3A%23E9D44E%3Bstroke-miterlimit%3A10%3B%7D%20.st1%7Bfill%3A%23E9D44E%3B%7D%3C%2Fstyle%3E%3Ccircle%20class%3D%22st0%22%20cx%3D%226.7%22%20cy%3D%226.7%22%20r%3D%226.2%22%2F%3E%3Cpath%20class%3D%22st1%22%20d%3D%22M5.7%209.8c0-.3.1-.6.3-.8s.5-.3.8-.3c.3%200%20.6.1.8.3.2.2.3.5.3.8s-.1.6-.3.8c-.2.2-.5.3-.8.3-.3%200-.6-.1-.8-.3s-.3-.5-.3-.8zm.3-5V3.3h1.6l-.1%201.5L7.3%208H6.2L6%204.8z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+/* --------------------------------------------
+ * --posts
+ * -------------------------------------------- */
+
+.fb-post {
+  @include flexbox;
+
+  position: relative;
+  padding: 30px 0;
+
+  .post-list--main & {
+    padding: 40px 60px;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &:not(.pinned-post) + &:not(.pinned-post) {
+    border-top: 1px solid $blue-border;
+  }
+
+  .post-list--main &:not(.pinned-post) + &:not(.pinned-post):after {
+    left: 60px;
+    right: 60px;
+  }
+
+  // pinned post
+  &.pinned-post {
+    background: $main-blue;
+    position: relative;
+
+    .icon--badge {
+      stroke: $yellow;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 60px;
+      top: -1px;
+      width: 15px;
+      height: 36px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2015.2%2036.3%22%3E%3Cpath%20fill%3D%22%23010101%22%20stroke%3D%22%23EAD54E%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M14.7%2034.9l-7.1-8.6-7.1%208.6V.5h14.2z%22%2F%3E%3C%2Fsvg%3E");
+    }
+  }
+
+  // blog post sidebar
+  aside {
+    @include flex(1 0 240px);
+
+    padding-right: 40px;
+  }
+
+  // author info
+  .post-author {
+    border-top: 1px solid $light-blue;
+    margin-top: 1em;
+    padding-top: .5em;
+  }
+
+  // post ballots
+  .post-votes {
+    padding-left: 20px;
+    text-align: center;
+
+    & > svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .post-vote-count {
+      font-size: 1.4em;
+      margin: 6px 0;
+      display: block;
+    }
+  }
+
+  // blog content
+  .post-content {
+    @include flex(1 1 auto);
+
+    .post-header {
+      margin-bottom: 1em;
+
+      .post-title {
+        color: $teal-blue;
+      }
+
+      .post-date {
+        @include purista-medium;
+
+        display: inline-block;
+      }
+    }
+
+    .post-full {
+      display: none;
+
+      &,
+      & + p {
+        margin-top: 1em;
+      }
+    }
+
+    &.show-full .post-full {
+      display: block;
+    }
+
+    .post-readmore {
+      color: $yellow;
+
+      &:after {
+        content: "\003e";
+        display: inline-block;
+        margin-left: .5em;
+      }
+    }
+  }
+
+  .post-list--main & .post-content {
+    h6 {
+      color: $yellow;
+    }
+
+    .post-title {
+      display: inline-block;
+    }
+  }
+}
+
+/**
+ * --posts excerpts
+ */
+.blog--top-posts .post-list {
+  margin-top: 20px;
+  border-top: 1px solid $teal-blue;
+  border-bottom: 1px solid $teal-blue;
+
+  .fb-post {
+    padding-right: 20px;
+  }
+}
+
+/**
+ * --trending
+ */
+.trending-list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* --------------------------------------------
+ * --emblem carousel
+ * -------------------------------------------- */
+
+.fb-choose-emblem {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h6 {
+    @extend .fb-container;
+
+    text-align: center;
+  }
+
+  .emblem-carousel {
+    position: relative;
+    background-color: $black;
+    padding: 20px;
+    margin-top: 20px;
+
+    .fb-modal-wrapper & {
+      background-color: transparent;
+    }
+
+    .slides {
+      text-align: center;
+
+      li {
+        cursor: pointer;
+
+        &.active .icon--badge {
+          stroke: $yellow;
+        }
+      }
+
+      .icon--badge {
+        width: 120px;
+        height: 72px;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --registrations
+ * -------------------------------------------- */
+.fb-registration {
+  fieldset {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .fb-form {
+    padding-bottom: 40px;
+  }
+}
+
+.multiple-registration-list {
+  counter-reset: multiple-registration;
+
+  .registration-name {
+    min-width: 200px;
+  }
+
+  .registration-email {
+    min-width: 200px;
+  }
+
+  li {
+    counter-increment: multiple-registration;
+    position: relative;
+    padding-left: 40px;
+    max-width: 600px;
+    margin: auto;
+
+    &:before {
+      content: counter(multiple-registration, decimal-leading-zero);
+      color: $yellow;
+
+      @include carbon;
+
+      font-size: 1.5625em;
+      position: absolute;
+      left: 0;
+      top: 50%;
+
+      @include translate(0, -50%);
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --user profiles
+ * -------------------------------------------- */
+
+/**
+ * --player info
+ */
+.player-info {
+  span {
+    @include purista-medium;
+  }
+
+  .player-rank {
+    color: $yellow;
+  }
+
+  .player-score {
+    color: $teal-blue;
+  }
+}
+
+/**
+ * --basic user card
+ */
+.fb-user-card {
+  @include flexbox;
+
+  @include align-center;
+
+  padding: 10px;
+
+  .user-avatar {
+    @include flex(0 0 80px);
+  }
+
+  .player-info {
+    @include flex(1 1 auto);
+
+    padding-left: 10px;
+  }
+}
+
+/* --------------------------------------------
+ * --progress indicators
+ * -------------------------------------------- */
+
+.fb-progress-bar {
+  .label {
+    @include purista-bold;
+
+    margin-bottom: 6px;
+    margin-top: 6px;
+
+    &:not(.pct-display) {
+      font-size: .8em;
+    }
+
+    &.label--left {
+      float: left;
+    }
+
+    &.label--right {
+      float: right;
+    }
+  }
+
+  // generic indicator
+  .indicator {
+    clear: both;
+    display: block;
+    position: relative;
+  }
+
+  // connected bar indicating a ratio
+  .indicator--ratio {
+    height: 10px;
+    background-color: $rate-bar-fill;
+
+    .gauge {
+      background-color: $rate-bar-bg;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+/**
+ * --game progress
+ */
+// celled indicator
+.game-progress {
+  overflow: hidden;
+}
+
+.game-progress-indicator {
+  @extend .fb-cf;
+
+  margin-right: -9px;
+
+  span {
+    float: left;
+    position: relative;
+    width: 10%;
+    height: 40px;
+    border: 1px solid darken($teal-blue, 20%);
+
+    & + span {
+      margin-left: -1px;
+    }
+
+    &:after,
+    &:before {
+      content: "";
+    }
+
+    &:after {
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      top: 14px;
+      bottom: 14px;
+      border: 2px solid $teal-blue;
+    }
+
+    &.active:after {
+      background-color: $teal-blue;
+    }
+
+    &.active.current-spot:after {
+      @include animation(hover-pulse-blue 1s linear 0s infinite);
+    }
+
+    &:before {
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: 6px;
+      bottom: 6px;
+      background-color: $main-blue;
+    }
+
+    .fb-admin-main &:before {
+      background-color: $black;
+    }
+  }
+}

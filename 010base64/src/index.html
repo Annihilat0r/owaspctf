@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FLAG checker (Error/Success)</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script>
+    var flag64="RKXBR3TMAWZLX2LZX3RYEWLUZ190AGLUZ3NFDG9FC2VLX2LMX3ROZXLFD29YA30=";
+  document.cookie = "FLAG="+flag64;
+</script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container">
+  <div id="success-box">
+    <div class="dot"></div>
+    <div class="dot two"></div>
+    <div class="face">
+      <div class="eye"></div>
+      <div class="eye right"></div>
+      <div class="mouth happy"></div>
+    </div>
+    <div class="shadow scale"></div>
+    <div class="message"><h1 class="alert">Success!</h1><p>yay, FLAG is correct.</p></div>
+    <button class="button-box"><h1 class="green">continue</h1></button>
+  </div>
+  <div id="error-box">
+    <div class="dot"></div>
+    <div class="dot two"></div>
+    <div class="face2">
+      <div class="eye"></div>
+      <div class="eye right"></div>
+      <div class="mouth sad"></div>
+    </div>
+    <div class="shadow move"></div>
+    <div class="message"><h1 class="alert">Error!</h1><p>oh no, FLAG is wrong.</div>
+    <button class="button-box"><h1 class="red">try again</h1></button>
+  </div>
+</div>
+
+<footer>
+  <p>made for <a href="https://owasp.org/"> OWASP Ukraine</a> ♡
+</footer>
+<!-- partial -->
+  
+</body>
+<script>
+  function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+  function check_flag() {
+    if (flag64==getCookie("FLAG").toUpperCase()){
+    document.getElementById("error-box").style.display = "none"; 
+  }  else{
+    document.getElementById("error-box").style.display = "block";
+  }
+  }
+  
+setInterval(function(){ check_flag(); }, 100);
+
+</script>
+</html>

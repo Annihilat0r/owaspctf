@@ -1,0 +1,51 @@
+/* ==============================================================
+   * Global styles
+   *
+   * global things like body background, and utility styles
+   ============================================================== */
+
+/**
+ * --body
+ */
+body {
+  background-color: $main-blue;
+  font-size: $text-size;
+  line-height: 1.4;
+  color: $light-blue;
+
+  @include source-code-regular;
+
+  @include break-min {
+    font-size: $text-size + 2;
+  }
+}
+
+/* --------------------------------------------
+ * --scrollbars
+ * -------------------------------------------- */
+
+::-webkit-scrollbar {
+  background-color: $main-blue;
+  border-left: 1px solid $teal-blue;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darken($teal-blue, 20%);
+  border-radius: 10px;
+  width: 8px;
+}
+
+/* --------------------------------------------
+ * --utility
+ * -------------------------------------------- */
+
+.fb-cf:before,
+.fb-cf:after {
+  content: " ";
+  display: table;
+}
+
+.fb-cf:after {
+  clear: both;
+}

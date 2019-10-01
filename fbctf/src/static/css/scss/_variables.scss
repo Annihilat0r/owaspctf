@@ -1,0 +1,468 @@
+/* ==============================================================
+   --FB CTF variables
+   ============================================================== */
+
+/* --------------------------------------------
+ * --type
+ * -------------------------------------------- */
+
+/**
+ * --source code
+ */
+@mixin source-code-regular {
+  font-family: 'Source Code Pro', Courier, monospace;
+  font-weight: 400;
+}
+
+@mixin source-code-light {
+  font-family: 'Source Code Pro', Courier, monospace;
+  font-weight: 300;
+}
+
+@mixin source-code-bold {
+  font-family: 'Source Code Pro', Courier, monospace;
+  font-weight: 700;
+}
+
+/**
+ * --purista
+ */
+@mixin purista-light {
+  font-family: 'puristalight', Courier, monospace;
+
+  @include uppercase;
+}
+
+@mixin purista-medium {
+  font-family: 'puristaregular', Courier, monospace;
+
+  @include uppercase;
+}
+
+@mixin purista-semibold {
+  font-family: 'puristasemibold', Courier, monospace;
+
+  @include uppercase;
+}
+
+@mixin purista-bold {
+  font-family: 'puristabold', Courier, monospace;
+
+  @include uppercase;
+}
+
+/**
+ * --carbon
+ */
+@mixin carbon {
+  font-family: 'carbon_plus', 'puristabold', Courier, monospace;
+}
+
+// text size
+$text-size: 12px;
+
+@mixin uppercase {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+$border-radius: 4px;
+
+/* --------------------------------------------
+ * --colors
+ * -------------------------------------------- */
+
+// MAIN BLUE
+//  - background
+$main-blue: #13242b;
+
+$main-blue-darken: #111e23;
+
+// TEAL BLUE
+//  - navigation
+//  - h1, h2, h3
+//  - anchor tags
+//  - default cta border/text
+//  - text input border
+//  - inner border for .fb-section-border
+$teal-blue: #21b4ba;
+
+// LIGHT BLUE
+//  - main text color
+//  - facebook icon
+//  - outer border for .fb-section-border
+//  - bottom border for the modal title
+$light-blue: #cff8fa;
+
+// BLUE BORDER
+//  - separating borders
+$blue-border: #2b3d43;
+
+// YELLOW
+//  - yellow cta border/text
+$yellow: #ead44d;
+
+// RED
+//  - red cta border/text
+$red: #f00;
+
+// BLACK
+//  - landing page footer
+//  - blog background
+$black: #000;
+
+$rate-bar-fill: #5cf0f6;
+$rate-bar-bg: #2a5763;
+
+/* --------------------------------------------
+ * --layout
+ * -------------------------------------------- */
+
+/**
+ * --flexbox
+ */
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
+}
+
+@mixin align-center {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+@mixin radios {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  &:after {
+    width: 16px;
+    height: 16px;
+    background: $main-blue;
+    border: 2px solid $teal-blue;
+    z-index: 1;
+  }
+
+  &:before {
+    display: none;
+    width: 8px;
+    height: 8px;
+    background: $yellow;
+    z-index: 2;
+  }
+}
+
+/* --------------------------------------------
+ * --prefixes
+ * -------------------------------------------- */
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin translate($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/**
+ * --animation
+ */
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+
+  @-o-keyframes $animation-name {
+    @content;
+  }
+
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@include keyframes(hover-pulse-yellow) {
+  0% {
+    background-color: rgba($yellow, 1);
+  }
+
+  50% {
+    background-color: rgba($yellow, 0.75);
+  }
+
+  100% {
+    background-color: rgba($yellow, 1);
+  }
+}
+
+
+@include keyframes(hover-pulse-blue) {
+  0% {
+    background-color: rgba($teal-blue, 1);
+  }
+
+  50% {
+    background-color: rgba($teal-blue, 0.75);
+  }
+
+  100% {
+    background-color: rgba($teal-blue, 1);
+  }
+}
+
+
+@include keyframes(hover-pulse-blue-arrows) {
+  0% {
+    fill: rgba($teal-blue, 1);
+  }
+
+  50% {
+    fill: rgba($teal-blue, 0.5);
+  }
+
+  100% {
+    fill: rgba($teal-blue, 1);
+  }
+}
+
+
+@include keyframes(hover-pulse-red) {
+  0% {
+    background-color: rgba($red, 1);
+  }
+
+  50% {
+    background-color: rgba($red, 0.75);
+  }
+
+  100% {
+    background-color: rgba($red, 1);
+  }
+}
+
+
+@include keyframes(alert-pulse) {
+  0% {
+    border-color: rgba($red, 1);
+  }
+
+  50% {
+    border-color: rgba($red, 0.5);
+  }
+
+  100% {
+    border-color: rgba($red, 1);
+  }
+}
+
+
+@include keyframes(crosshairs-flicker) {
+  0% {
+    opacity: 1;
+  }
+
+  28% {
+    opacity: 1;
+  }
+
+  31% {
+    opacity: 0;
+  }
+
+  34% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  58% {
+    opacity: 0;
+  }
+
+  61% {
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(crosshairs-rotate) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+
+  30%, 70% {
+    @include transform(rotate(60deg));
+  }
+
+  100% {
+    @include transform(rotate(120deg));
+  }
+}
+
+
+@include keyframes(click-effect-inner) {
+  0% {
+    opacity: 1;
+
+    @include transform(scale3d(0.5, 0.5, 1));
+  }
+
+  100% {
+    opacity: 0;
+
+    @include transform(scale3d(1.1, 1.1, 1));
+  }
+}
+
+
+@include keyframes(click-effect-outer) {
+  0% {
+    opacity: 1;
+
+    @include transform(scale3d(0.5, 0.5, 1));
+  }
+
+  50%, 100% {
+    opacity: 0;
+
+    @include transform(scale3d(1.2, 1.2, 1));
+  }
+}
+
+
+/*
+  (TEXT) PARAMS
+  =================
+  1. Namespace
+  2. Intensity
+  3. Highlight #1 color
+  4. Highlight #2 color
+  5. Width (px)
+  6. Height (px)
+  7. repetitions - the number of times the animation should run
+*/
+
+@mixin textGlitch($name, $intensity, $highlightColor1, $highlightColor2, $width, $height, $repetitions) {
+  position: relative;
+
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i * 1 / $steps)} {
+            clip: rect(random($height) + px, $width + px, random($height) + px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  &:after {
+    left: 2px;
+    text-shadow: -1px 0 $highlightColor1;
+    animation: #{$name}-anim-1 2s $repetitions linear alternate-reverse;
+  }
+
+  &:before {
+    left: -2px;
+    text-shadow: 2px 0 $highlightColor2;
+    animation: #{$name}-anim-2 3s $repetitions linear alternate-reverse;
+  }
+}
+
+/* --------------------------------------------
+ * --media queries
+ * -------------------------------------------- */
+
+// ======================
+// Breakpoints
+// ======================
+
+$breakpoint-large: 1386px;
+
+// Media Query (Min-Width)
+@mixin break-min($breakpoint: $breakpoint-large) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Media Query (Min-Width)
+@mixin break-max($breakpoint: $breakpoint-large - 1) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

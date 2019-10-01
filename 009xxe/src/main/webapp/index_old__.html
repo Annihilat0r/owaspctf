@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML message system</title>
+    <form id="myform" onsubmit="submitform(); return false;">
+    <p><label for="first_name">Name:</label>
+    <input type="text" name="first_name" id="name"></p>
+
+    <p><label for="last_name">Message:</label>
+    <input type="text" name="last_name" id="message"></p>
+
+    <button onclick="submitform(); return false;">Send</button>
+</form>
+<p id="result"><p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+
+
+function submitform(){
+
+  var xmlData = '<?xml version="1.0" encoding="UTF-8"?>';
+     xmlData+='<msg>';
+  	 xmlData+='<name>'+$('#name').val()+'</name>';
+  	 xmlData+='<content>'+$('#message').val()+'</content>';
+  	 xmlData+='</msg>';
+  $.ajax({
+     type: "PUT",
+     url: "/rest/msgs/",
+     data: xmlData,
+     contentType: "application/xml",
+     success: function(res) {
+       $('#result').text(res);
+     }
+  });
+
+};
+    </script>
+</head>
+<body>
+
+</body>
+</html>

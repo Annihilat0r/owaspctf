@@ -1,0 +1,34 @@
+Team.php:250
+// Create team
+await \HH\Asio\va(
+  $db->queryf(
+    'INSERT INTO teams (name, password_hash, logo, created_ts, visible) VALUES (%s, %s, %s, NOW(), %s)',
+    $name,
+    $password_hash,
+    $logo,
+    "0",
+  ),
+  Logo::genSetUsed($logo, true),
+);
+
+
+MultiTeam.php
+115	        $teams =
+116	          await self::genTeamArrayFromDB(
+117	            'SELECT * FROM teams WHERE active = 1 AND visible > -1 ORDER BY points DESC, last_score ASC',
+118	            intval($leaderboard_limit->getValue()),
+119	          );
+120	      } else {
+121	        $teams =
+122	          await self::genTeamArrayFromDB(
+123	            'SELECT * FROM teams WHERE active = 1 AND visible > -1 ORDER BY points DESC, last_score ASC',
+124	          );
+125	      }
+
+249       $teams = await self::genTeamArrayFromDB(
+250	        'SELECT * FROM teams WHERE visible > -1 AND active = 1 ORDER BY id',
+251	      );
+
+499	        await self::genTeamArrayFromDB(
+500	          'SELECT sl.level_id, sl.team_id FROM (SELECT level_id, MIN(ts) ts FROM scores_log LEFT JOIN teams ON team_id = teams.id WHERE teams.visible > -1 AND teams.active = 1 GROUP BY level_id) sl2 JOIN scores_log sl ON sl.level_id = sl2.level_id AND sl.ts = sl2.ts;',
+501	        );

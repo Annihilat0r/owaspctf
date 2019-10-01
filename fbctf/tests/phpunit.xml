@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<phpunit colors="true">
+  <testsuites>
+    <testsuite name="FBCTF Test Suite">
+      <directory>../tests</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist addUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">../src</directory>
+    </whitelist>
+    <blacklist>
+      <directory>../vendor</directory>
+    </blacklist>
+  </filter>
+  <logging>
+    <log type="coverage-html" target="../reports/coverage"/>
+  </logging>
+</phpunit>

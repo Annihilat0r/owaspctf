@@ -1,0 +1,398 @@
+/* ==============================================================
+   * Modals
+   *
+   * code for the modal stuff
+   ============================================================== */
+
+.fb-modal-wrapper {
+  background: rgba($main-blue, 0.92);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  @include flexbox;
+
+  @include align-center;
+
+  visibility: hidden;
+  opacity: 0;
+
+  @include transition(visibility 0.2s, opacity 0.2s);
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.modal--country-capture {
+    background: rgba($main-blue, 0.98);
+  }
+}
+
+.fb-modal-content {
+  @extend .fb-container;
+
+  @extend .container--small;
+
+  .modal--default & .modal-title {
+    margin-bottom: 20px;
+  }
+
+  .modal--popup & {
+    @extend .fb-section-border;
+
+    background: $main-blue-darken;
+
+    .modal-title {
+      padding: 20px;
+    }
+
+    .fb-form {
+      padding: 40px;
+    }
+
+    .fb-form-no-padding {
+      padding: 0px !important;
+    }
+
+  }
+
+  .modal-title {
+    border-bottom: 1px solid $teal-blue;
+    position: relative;
+    padding-bottom: 20px;
+
+    h4 {
+      padding-right: 40px;
+    }
+
+    a {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+
+  .modal--popup & .modal-title a {
+    right: 20px;
+  }
+
+  .modal-footer {
+    border-top: 1px solid $teal-blue;
+
+    .col + .col {
+      border-left: 1px solid $teal-blue;
+    }
+
+    .country-capture-stats {
+      padding: 10px;
+    }
+
+    .country-capture-completed {
+      position: relative;
+
+      span {
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+/**
+ * --country popup
+ */
+.fb-popup-content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+
+  @include transition(visibility 0.2s, opacity 0.2s);
+
+  // the popup on hover
+  &.popup--hover {
+    background: $main-blue-darken;
+    width: 326px;
+    pointer-events: none;
+
+    .modal-title,
+    .country-capture-stats {
+      padding: 10px;
+    }
+
+    .modal-title {
+      border-bottom: 1px solid $teal-blue;
+    }
+  }
+
+  // the view-only popup
+  &.popup--view-only {
+    .capturing-team-name {
+      display: inline-block;
+      vertical-align: baseline;
+      color: $light-blue;
+    }
+
+    .points-value {
+      font-size: 1.375em;
+      display: inline-block;
+      vertical-align: baseline;
+      text-transform: uppercase;
+      color: $teal-blue;
+    }
+
+    .country-owner,
+    .country-owner > span {
+      color: $yellow;
+    }
+  }
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @include break-min {
+    width: 380px;
+  }
+}
+
+/**
+ * --tutorial
+ */
+.fb-tutorial {
+  position: relative;
+  padding-top: 160px;
+  padding-bottom: 160px;
+
+  .header-graphic {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 160px;
+  }
+
+  &[data-tutorial-step="zoom"] .icon--tutorial--zoom {
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    @include translate(0, -50%);
+  }
+
+  &[data-tutorial-step="command-lines"] .tutorial-graphic--command-lines {
+    @include align-center;
+
+    width: 100%;
+
+    & > * {
+      @include flex(0 0 50%);
+    }
+
+    .indicator {
+      color: $red;
+      text-align: right;
+      display: inline-block;
+      padding-right: 10px;
+    }
+
+    ul {
+      li:first-child,
+      li:last-child {
+        opacity: .3;
+      }
+    }
+  }
+
+  .tutorial-content {
+    border-bottom: 1px solid $teal-blue;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    .tutorial-navigation {
+      @include align-center;
+
+      padding-top: 20px;
+
+      .tutorial-progress {
+        @include flex(1 0 auto);
+
+        li {
+          width: 34px;
+          height: 2px;
+          background: $teal-blue;
+
+          @include radios;
+
+          &:last-child {
+            width: 16px;
+            background-color: transparent;
+          }
+
+          &:before,
+          &:after {
+            top: 50%;
+          }
+
+          &:before {
+            width: 6px;
+            height: 6px;
+            margin-top: -3px;
+            left: 5px;
+          }
+
+          &.step-filled:before {
+            display: block;
+          }
+
+          &:after {
+            margin-top: -8px;
+          }
+        }
+      }
+
+      .tutorial-actionable {
+        @include flex(0 0 auto);
+      }
+    }
+  }
+
+  .tutorial-skip {
+    text-align: right;
+  }
+}
+
+/**
+ * --actionable
+ */
+.action-main {
+  padding: 40px;
+
+  .action-actionable {
+    text-align: right;
+    padding-top: 40px;
+
+    a + a {
+      margin-left: 20px;
+    }
+  }
+
+  .errors-list {
+      list-style: circle inside;
+  }
+}
+
+/**
+ * --choose logo
+ */
+
+.modal--choose-logo .fb-modal-content {
+  max-width: 860px;
+}
+
+.choose-logo-modal {
+  .fb-choose-emblem {
+    padding-top: 20px;
+    padding-bottom: 0;
+
+    .emblem-carousel {
+      margin-top: 0;
+
+      .slides .icon--badge {
+        width: 90px;
+      }
+    }
+  }
+
+  .action-actionable {
+    text-align: right;
+    padding-right: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+/**
+ * --team
+ */
+.modal--team {
+  .icon--badge {
+    stroke: $yellow;
+    max-width: 110px;
+    max-height: 82px;
+    height: auto;
+  }
+
+  .fb-modal-main {
+    padding-bottom: 20px;
+
+    .col {
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+
+    header {
+      padding-bottom: 10px;
+    }
+
+    .badge-column, .rank-column {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .points-display {
+      margin: 0 auto 10px;
+      width: 92px;
+      height: 92px;
+
+      .points-number {
+        line-height: .8;
+      }
+    }
+
+    .team-members li + li {
+      margin-top: 6px;
+    }
+  }
+
+  .modal-footer .col {
+    text-align: center;
+    padding: 10px 20px 20px;
+
+    .point-total {
+      color: $teal-blue;
+      font-size: 3.5em;
+      line-height: 1.2;
+
+      &.points--total {
+        color: $yellow;
+      }
+    }
+  }
+
+  .js-launch-modal {
+    font-size: .8em;
+
+    @include purista-semibold;
+
+    &:hover {
+      color: $light-blue;
+    }
+
+    &:after {
+      @include source-code-regular;
+
+      content: "\003e";
+      display: inline-block;
+      margin-left: .5em;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  
+}
+body {
+  text-align: center;
+  background-color: #517396;
+ /* background: rgba(214,214,214,1);
+background: -moz-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(128,128,128,1) 50%, rgba(79,79,79,1) 50%, rgba(156,156,156,1) 50%, rgba(235,235,235,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(214,214,214,1)), color-stop(50%, rgba(128,128,128,1)), color-stop(50%, rgba(79,79,79,1)), color-stop(50%, rgba(156,156,156,1)), color-stop(100%, rgba(235,235,235,1)));
+background: -webkit-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(128,128,128,1) 50%, rgba(79,79,79,1) 50%, rgba(156,156,156,1) 50%, rgba(235,235,235,1) 100%);
+background: -o-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(128,128,128,1) 50%, rgba(79,79,79,1) 50%, rgba(156,156,156,1) 50%, rgba(235,235,235,1) 100%);
+background: -ms-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(128,128,128,1) 50%, rgba(79,79,79,1) 40%, rgba(156,156,156,1) 50%, rgba(235,235,235,1) 100%);
+background: linear-gradient(to right, rgba(214,214,214,1) 0%, rgba(128,128,128,1) 50%, rgba(79,79,79,1) 50%, rgba(156,156,156,1) 50%, rgba(235,235,235,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#ebebeb', GradientType=1 ); */
+}
+
+.triangle-1 {
+  position:fixed;
+  z-index: -60;
+  width: 100vw;
+  height: 50vh;
+  border-top: solid 50vh #7f05a0;
+  border-left: solid 50vw transparent;
+  border-right: solid 50vw transparent;
+  
+}
+.triangle-1 p {
+   font-family: 'montserrat',sans-serif;
+  color: #2a0239;
+  position: fixed;
+  top: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.left-wall {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  z-index: -90;
+  margin-left: -10px !important;
+  margin-top: 10vh;
+  float:left;
+}
+left-wall img {
+  width: 200vw;
+  height: 200vh;
+}
+
+
+.right-wall {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  z-index: -80;
+  margin-top:40px;
+  margin-left:  60vw;
+  margin-top: 6vh;
+  float: right;
+}
+right-wall img {
+  margin-left: 50vw;
+  width: 200vw !important;
+  height: 200vh;  -webkit-transform: perspective(400px) rotateY(45deg);  transform: perspective(400px) rotateY(45deg);
+}
+
+.triangle-2 {
+  position:fixed;
+  margin-top: 50vh;
+  bottom: o;
+  z-index: -50;
+  width: 100vw;
+  height: 50vh;
+  border-bottom: solid 50vh #185797;
+  border-left: solid 50vw transparent;
+  border-right: solid 50vw transparent;
+}
+
+.dimension {
+  position:fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+background: rgba(32,48,59,0.23);
+background: radial-gradient(ellipse at center, rgba(32,48,59,0.23) 0%, rgba(255,255,255,0.51) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20303b', endColorstr='#ffffff', GradientType=1 );
+} 
+
+.end-tunnel {
+  z-index:2;
+  width:50vw;
+  height:50vh;
+	position: fixed;
+	margin: auto;
+	top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background-image: url("http://giphygifs.s3.amazonaws.com/media/gmOYHrYLuhFCM/giphy.gif"); 
+  background-position:  center ;
+  background-size: 100%; 
+box-shadow: 0px -9px 36px 5px rgba(248,255,216,0.33);  
+}
+.end-tunnel img {
+	position: fixed;
+	margin: auto;
+	top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+}
+
+.sparkles {
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-image: url("https://media.giphy.com/media/qi4265e8mwHwQ/giphy.gif");
+  background-repeat: repeat;
+    opacity: 0.3;
+}
+.dancing {
+  z-index:10000;
+  display: inline !important;
+  position: relative;
+  margin-left: -150px;
+}
+.click {
+  position: absolute;
+  z-index:950;
+  width: 150 px;
+  height: 190px;
+  background-color: #fd1aba;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 50%;
+  margin-bottom: -40%;
+  margin-left: -30%;
+  color: #fff;
+  text-decoration: none;
+}

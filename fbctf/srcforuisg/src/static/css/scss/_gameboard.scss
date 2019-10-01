@@ -1,0 +1,1115 @@
+/* ==============================================================
+   * gameboard
+   *
+   * all the gameboard styles
+   ============================================================== */
+
+$gameboard-margin: 10px;
+$module-margin: 20px;
+
+.fb-gameboard {
+  height: 100vh;
+  position: relative;
+
+  // main header
+  .gameboard-header {
+    margin-left: 24%;
+    margin-right: 24%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    .tutorial-active & {
+      position: static;
+    }
+
+    .fb-map-select {
+      text-align: center;
+      display: inline-block;
+
+      .click-effect > span {
+        position: relative;
+        display: inline-block;
+
+        &:before,
+        &:after {
+          margin-top: -50px;
+        }
+      }
+
+      label.listview-only {
+        display: none;
+      }
+    }
+  }
+
+  // module containers
+  .fb-module-container {
+    position: absolute;
+
+    .tutorial-step--tool-bars & {
+      z-index: 11;
+    }
+
+    &.container--column {
+      width: 23%;
+      max-width: 360px;
+      top: $module-margin;
+
+      &.column-left {
+        left: $module-margin;
+      }
+
+      &.column-right {
+        right: $module-margin;
+      }
+
+      aside + aside {
+        margin-top: 20px;
+      }
+    }
+
+    &.container--row {
+      position: absolute;
+      bottom: $module-margin;
+      left: $module-margin;
+      right: $module-margin;
+
+      & > aside {
+        position: absolute;
+
+        .module-content {
+          overflow: auto;
+          padding-top: 10px;
+          padding-right: 14px;
+        }
+      }
+
+      .module--outer-left {
+        bottom: 0;
+        left: 0;
+        width: 29%;
+        padding-right: 10px;
+      }
+
+      .module--inner {
+        bottom: 0;
+        left: 29%;
+        right: 29%;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 2;
+      }
+
+      .module--inner-left {
+        bottom: 0;
+        left: 29%;
+        right: 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 2;
+      }
+
+      .module--inner-right {
+        &:not(.activity-viewmode) {
+          left: 50%;
+        }
+        &.activity-viewmode {
+          left: 31%;
+        }
+        bottom: 0;
+        right: 29%;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 2;
+      }
+
+      .module--outer-right {
+        bottom: 0;
+        right: 0;
+        width: 29%;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  // modules
+  aside[data-module] {
+    background: $main-blue;
+
+    .radio-tab-content {
+      padding-top: 10px;
+    }
+
+    .module-header {
+      border-top: 1px solid $teal-blue;
+      border-bottom: 1px solid $teal-blue;
+      padding: 6px 10px 6px 26px;
+      position: relative;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        left: 6px;
+        top: 50%;
+        margin-top: -4px;
+        border: 1px solid $light-blue;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        right: 6px;
+        width: 14px;
+        height: 8px;
+        top: 50%;
+        margin-top: -4px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-position: contain;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2011.2%205.6%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%237ED0E0%22%20stroke-miterlimit%3D%2210%22%20d%3D%22M10.9.4L5.9%205c-.2.2-.4.2-.5%200L.4.3%22%2F%3E%3C%2Fsvg%3E");
+
+        body[data-section="viewer-mode"] & {
+          display: none;
+        }
+      }
+    }
+
+    .module-content {
+      @include flexbox;
+
+      @include transition(all 0.4s);
+
+      flex-direction: column;
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      position: relative;
+
+      .fb-section-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        @include flexbox;
+
+        flex-direction: column;
+      }
+
+      .module-top {
+        @include flex(0 0 auto);
+      }
+
+      .module-scrollable {
+        @include flex(1 1 auto);
+
+        overflow: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
+    &.individual-chat-active,
+    &.active {
+      .module-header:before {
+        background: $light-blue;
+      }
+
+      .module-content {
+        margin-top: 10px;
+        visibility: visible;
+        opacity: 1;
+
+        &:not(.leaderboard-viewmode) {
+          height: calc(33vh - 62px);
+        }
+        &.leaderboard-viewmode {
+          height: calc(97vh - 62px);
+        }
+      }
+    }
+
+    /**
+     * --specific modules
+     */
+
+    // teams module
+    &[data-module="teams"] {
+      .grid-list {
+        padding-top: 20px;
+      }
+
+      li {
+        text-align: center;
+
+        &.alert {
+          position: relative;
+
+          &:before {
+            position: absolute;
+            right: 0px;
+            top: 2px;
+            background-color: $main-blue;
+          }
+        }
+      }
+
+      a:hover .icon--badge {
+        stroke: $yellow;
+      }
+    }
+
+    // data-module = teams
+
+    // leaderboard module
+    &[data-module="leaderboard"] {
+      .module-top {
+        padding: 10px;
+        border-bottom: 1px solid $teal-blue;
+      }
+    }
+
+    // data-module = leaderboard
+
+    // announcements module
+    &[data-module="announcements"] {
+      .activity-stream li {
+        position: relative;
+        padding: 3px 0 3px 5px;
+        border-bottom: 1px solid $teal-blue;
+      }
+    }
+    
+    // data-module = announcements
+
+    // activity module
+    &[data-module="activity"] {
+      .activity-stream li {
+        position: relative;
+        padding: 4px 0 4px 18px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 6px;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+        }
+
+        &.opponent-team:before {
+          background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-300%20391.6%2010%2010.4%22%3E%3Cstyle%3E.st0%7Bfill%3A%23ED2224%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M-299.7%20391.9l9.1%204.8v.1l-9.1%204.8v-9.7z%22%2F%3E%3C%2Fsvg%3E");
+        }
+
+        &.your-team:before {
+          background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-300%20391.6%2010%2010.4%22%3E%3Cstyle%3E.st0%7Bfill%3A%23EAD44D%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M-299.7%20391.9l9.1%204.8v.1l-9.1%204.8v-9.7z%22%2F%3E%3C%2Fsvg%3E");
+        }
+
+        span {
+          @include source-code-bold;
+        }
+      }
+    }
+
+    // data-module = activity
+
+    &[data-module="under-attack"] {
+      .activity-stream {
+        li {
+          margin: 8px 0;
+        }
+
+        .team-name {
+          position: relative;
+          display: inline-block;
+          color: $red;
+          padding-left: 18px;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            margin-top: -5px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-300%20391.6%2010%2010.4%22%3E%3Cstyle%3E.st0%7Bfill%3A%23ED2224%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M-299.7%20391.9l9.1%204.8v.1l-9.1%204.8v-9.7z%22%2F%3E%3C%2Fsvg%3E");
+          }
+        }
+      }
+    }
+
+    &[data-module="world-domination"] {
+      .domination-status {
+        position: relative;
+        padding-right: 94px;
+
+        .captured-info {
+          font-size: .875em;
+          display: inline-block;
+          vertical-align: middle;
+
+          span {
+            display: block;
+
+            &.country {
+              color: $yellow;
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        .progress {
+          @include flexbox;
+
+          align-items: flex-end;
+
+          @include break-min {
+            margin-top: 10px;
+          }
+
+
+          .progress-pct {
+            @include flex(0 0 auto);
+
+            font-size: 1.5em;
+            padding: 0 10px;
+          }
+
+          .progress-graph {
+            @include flex(1 0 auto);
+
+            .filled {
+              stroke: $rate-bar-fill;
+            }
+          }
+        }
+
+        .icon--globe {
+          position: absolute;
+          right: 0;
+          top: 50%;
+
+          @include translate(0, -50%);
+        }
+      }
+
+      // domination status
+
+      .game-statuses > div {
+        margin-top: 10px;
+      }
+    }
+
+    // data-module = world domination
+
+    &[data-module="world-chat"] {
+      &.individual-chat-active .module-content,
+      &.individual-chat-active .module-header {
+        visibility: hidden;
+      }
+
+      .chat-box {
+        padding: 8px 16px 8px 6px;
+
+        .message-time:before,
+        .message-author:before {
+          content: "[";
+        }
+
+        .message-time:after,
+        .message-author:after {
+          content: "]";
+        }
+
+        li + li {
+          margin-top: 6px;
+        }
+      }
+
+      .chat-input {
+        @include flexbox;
+
+        padding-top: 10px;
+
+        .input-container {
+          @include flex(1 0 auto);
+
+          padding-right: 10px;
+
+          input {
+            width: 100%;
+          }
+        }
+
+        button {
+          @include flex(0 0 auto);
+
+          font-size: .9em;
+        }
+      }
+
+      .world-chat-box {
+        position: relative;
+      }
+    }
+
+    // data-module = world chat
+
+    &[data-module="game-clock"] {
+      .tutorial-step--game-clock & {
+        z-index: 11;
+
+        .module-content {
+          height: calc(33vh - 62px);
+          margin-top: 10px;
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .game-clock {
+        margin-bottom: 10px;
+        border-bottom: 1px solid $teal-blue;
+        font-size: 2.5em;
+        text-align: center;
+        padding-bottom: 20px;
+
+        span {
+          padding-bottom: 10px;
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          letter-spacing: .1em;
+        }
+
+        span.three-digit{
+          width: 80px;
+          letter-spacing: 0;
+        }
+
+        span:before {
+          content: "00";
+          position: absolute;
+          opacity: .2;
+          left: 0;
+          right: 0;
+          top: 0;
+        }
+
+        span.three-digit:before {
+          content: "000"
+        }
+
+        span:after {
+          @include purista-bold;
+
+          position: absolute;
+          font-size: 9px;
+          bottom: 0;
+          text-align: center;
+          left: 50%;
+
+          @include translate(-50%, 0);
+
+          text-transform: uppercase;
+        }
+
+        .clock-days:after {
+          content: "day";
+        }
+
+        .clock-hours:after {
+          content: "hr";
+        }
+
+        .clock-minutes:after {
+          content: "min";
+        }
+
+        .clock-seconds:after {
+          content: "sec";
+        }
+
+        .clock-milliseconds {
+          color: darken($teal-blue, 10%);
+
+          &:after {
+            content: "m.sec";
+          }
+        }
+
+        @include break-min(1074px) {
+          font-size: 3em;
+
+          span {
+            width: 60px;
+          }
+        }
+
+
+        @include break-min(1180px) {
+          font-size: 4em;
+
+          span {
+            width: 66px;
+          }
+        }
+
+
+        @include break-min {
+          span {
+            width: 80px;
+          }
+        }
+      }
+    }
+
+    // data-module = game clock
+ 
+  }
+}
+
+/* --------------------------------------------
+ * --map specific
+ * -------------------------------------------- */
+
+body[data-section="gameboard"] .fb-page {
+  overflow: hidden;
+}
+
+.fb-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  .gameboard--viewmode & {
+    bottom: 33%;
+  }
+
+  svg {
+    height: 100vh;
+    width: 100%;
+
+    .gameboard--viewmode & {
+      height: calc(100vh - 33.3%);
+    }
+
+    // the indicator
+    .map-indicator {
+      opacity: 0;
+      pointer-events: none;
+
+      &.captured--you {
+        fill: $yellow;
+      }
+
+      &.captured--opponent {
+        stroke: $red;
+        stroke-width: 2;
+      }
+    }
+
+    // land paths
+    .land {
+      fill: $black;
+      fill-opacity: 1;
+      stroke: $main-blue;
+      stroke-opacity: 1;
+      stroke-width: 1.5;
+
+      &.active {
+        fill: #1f3b47;
+	stroke: #36687c;
+        stroke-width: 1;
+      }
+    }
+
+    .country-hover .land {
+      fill: transparent;
+    }
+
+    .countries {
+      g[data-captured] .map-indicator {
+        opacity: 1;
+      }
+
+      g.inactive {
+        opacity: .2;
+      }
+
+      g.highlighted .land {
+        stroke-width: 2;
+      }
+    }
+
+    .country-clicked {
+      .map-indicator[class*="captured--"] {
+        opacity: 1;
+      }
+
+      .latitude-focus,
+      .longitude-focus,
+      .crosshairs {
+        @include transition(all 0.3s);
+      }
+
+      .crosshairs {
+        @include animation(crosshairs-flicker 0.3s linear 0.3s 1);
+
+        .crosshairs-rotate {
+          @include animation(crosshairs-rotate 0.3s linear 0.3s 1);
+        }
+      }
+    }
+
+    // country - active state
+    .country-clicked .land,
+    .country-hover .land {
+      stroke: $yellow;
+      stroke-width: 1;
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --alerts
+ * -------------------------------------------- */
+.alerts {
+  position: absolute;
+  left: -20px;
+  right: -20px;
+  bottom: 100%;
+  padding-bottom: 20px;
+
+  .tutorial-active &,
+  .listview-enabled & {
+    display: none;
+  }
+
+  .alert-placeholder {
+    display: none;
+  }
+
+  & > li {
+    background: rgba($main-blue, 0.85);
+    border: 2px solid $red;
+    border-radius: 20px;
+    opacity: 1;
+    visibility: visible;
+
+    @include animation(alert-pulse 1s linear 0s infinite);
+
+    @include transition(opacity 0.3s, visibility 0.3s);
+
+    &.removing,
+    &.loadin {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    & + li {
+      margin-top: 10px;
+    }
+
+    & > div {
+      padding: 6px 10px;
+    }
+  }
+
+  .alert-main {
+    @include flexbox;
+
+    @include align-center;
+  }
+
+  .alert {
+    @include flex(1 0 auto);
+
+    &:before {
+      margin-right: 10px;
+    }
+  }
+
+  .alert--actionable {
+    @include flex(0 0 auto);
+
+    .fb-cta {
+      font-size: .8em;
+      display: none;
+    }
+
+    &.out-of-time {
+      .fb-cta {
+        display: inline-block;
+      }
+
+      .fb-numbers {
+        display: none;
+      }
+    }
+
+    .icon {
+      width: 14px;
+      height: 14px;
+      margin: 0 4px;
+      stroke: $red;
+      fill: none;
+    }
+  }
+
+  .individual-chat {
+    display: none;
+    padding-top: 20px;
+    overflow: hidden;
+  }
+
+  // the enabled state
+  &.individual-chat-enabled {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    right: -10px;
+    padding: 0;
+
+    & > li {
+      display: none;
+      margin: 0;
+      border-radius: $border-radius;
+
+      &.active {
+        @include flexbox;
+
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .alert-main {
+          @include flex(0 0 auto);
+
+          font-size: 1.5em;
+          border-bottom: 1px solid $red;
+
+          .alert:before {
+            display: none;
+          }
+        }
+
+        .individual-chat {
+          @include flex(1 1 auto);
+
+          @include flexbox;
+
+          background-color: $main-blue-darken;
+        }
+      }
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --loading
+ * -------------------------------------------- */
+
+.fb-loading {
+  @include flexbox;
+
+  @include align-center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: $main-blue;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+
+  .gameboard-loading {
+    max-width: 520px;
+  }
+
+  .loading & {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  h2 {
+    color: $yellow;
+
+    @include purista-bold;
+
+    padding: 0;
+  }
+
+  .game-progress {
+    margin-top: 2em;
+  }
+
+  .boot-sequence {
+    margin-top: 2em;
+    font-size: .8em;
+  }
+}
+
+/* --------------------------------------------
+ * --capture country popup
+ * -------------------------------------------- */
+
+.capture-hints-and-help {
+  & > div {
+    display: none;
+    padding: 0 40px 40px 40px;
+  }
+
+  .hint-enabled & .capture-hint,
+  .help-enabled & .capture-help {
+    display: block;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+  }
+}
+
+.country-capture-form {
+  .help--time-left {
+    font-size: 2em;
+    display: none;
+  }
+
+  .help-enabled & {
+    .help--time-left {
+      display: inline-block;
+    }
+
+    .actions--right .fb-cta {
+      display: none;
+    }
+  }
+}
+
+.country-capture-stats .country-stats {
+  padding-left: 20px;
+}
+
+.country-capture-completed {
+  span {
+    color: $yellow;
+  }
+
+  .completed-list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    padding: 4px 20px 4px 0;
+    padding-right: 20px;
+    overflow: auto;
+
+    li {
+      @extend .opponent-name;
+
+      @include purista-medium;
+
+      margin: 4px 0;
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --scoreboard
+ * -------------------------------------------- */
+
+.modal--default[class*="modal--scoreboard"] .fb-modal-content {
+  max-width: 860px;
+  max-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .fb-centered-main {
+    padding-bottom: 40px;
+  }
+}
+
+.game-scoreboard {
+  @include flex(0 1 auto);
+
+  overflow: hidden;
+  padding-top: 40px;
+
+  .main-data {
+    max-height: 300px;
+    border-top: 1px solid $teal-blue;
+
+    .el--radio {
+      text-align: center;
+    }
+  }
+}
+
+/**
+ * --graphic
+ */
+.scoreboard-graphic {
+  margin: 20px 0;
+
+  svg .axis {
+    line, path {
+      fill: none;
+      stroke: $light-blue;
+      stroke-width: 2;
+      shape-rendering: crispEdges;
+    }
+
+    text {
+      stroke: #75a5ba;
+    }
+  }
+}
+
+/* ------------------------------------------
+ * --listview
+ * ------------------------------------------ */
+
+.fb-listview {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: rgba($main-blue, 0.8);
+  display: none;
+
+  .listview-container {
+    position: absolute;
+    top: 180px;
+    bottom: 100px;
+    left: $gameboard-margin;
+    right: $gameboard-margin;
+    overflow: auto;
+
+    @include transition(all 0.4s);
+  }
+
+  table {
+    border-collapse: separate;
+    padding: 4px;
+
+    tr:nth-child(even) td {
+      background: rgba(#20364b, 0.5);
+    }
+
+    tr:hover {
+      outline: 1px solid $yellow;
+    }
+
+    td {
+      padding: 20px;
+
+      // country name
+      &:nth-child(1) {
+        @include purista-bold;
+
+        color: $light-blue;
+      }
+
+      // country points
+      &:nth-child(2) {
+        color: $yellow;
+      }
+
+      // country category
+      &:nth-child(3) {
+        color: $teal-blue;
+      }
+
+      // status
+      &:nth-child(4) {
+        @include source-code-regular;
+
+        text-transform: none;
+        letter-spacing: 0;
+      }
+    }
+
+    tr:not(.help-enabled):not(.captured--you) td,
+    tr.help-enabled td:nth-child(4) {
+      cursor: pointer;
+    }
+
+    tr.captured--you td:nth-child(-n+3),
+    tr.help-enabled td:nth-child(-n+3),
+    tr.inactive td {
+      opacity: .4;
+    }
+
+    tr.captured--you:nth-child(even) td:nth-child(4),
+    tr:nth-child(even).help-enabled td:nth-child(4) {
+      background: rgba(#20364b, 0.2);
+    }
+  }
+}
+
+.listview-enabled {
+  .fb-listview {
+    display: block;
+  }
+
+  .fb-module-container.container--column.column-left aside {
+    background: transparent;
+  }
+
+  .gameboard-header .fb-map-select label.listview-only {
+    display: inline-block;
+  }
+
+  &.fb-gameboard aside[data-module="teams"] {
+    display: none;
+  }
+
+  &.fb-gameboard aside[data-module="world-domination"] {
+    .module-header,
+    .game-statuses,
+    .recently-captured {
+      display: none;
+    }
+
+    .module-content {
+      height: 132px;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .domination-status .progress {
+      margin-top: 0;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .alerts.individual-chat-enabled {
+    display: block;
+  }
+}

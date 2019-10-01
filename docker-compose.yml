@@ -1,0 +1,179 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+    - "80:80"
+    - "443:443"
+    - "53:53"
+    - "53:53/udp"
+    volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./certs:/etc/ssl/private
+    links:
+    - 1.owaspctf.gq
+    - 2.owaspctf.gq
+    - 3.owaspctf.gq
+    - 4.owaspctf.gq
+    - 5.owaspctf.gq
+    - 6.owaspctf.gq
+    - 7.owaspctf.gq
+    - 8.owaspctf.gq
+    - 9.owaspctf.gq
+    - 10.owaspctf.gq
+    - 11.owaspctf.gq
+    - 12.owaspctf.gq
+    - 13.owaspctf.gq
+    - 14.owaspctf.gq
+    - 015googleauthdns
+    - 15.owaspctf.gq
+    - 16.owaspctf.gq
+    - 17.owaspctf.gq
+    - 18.owaspctf.gq
+    - 19.owaspctf.gq
+    - 20.owaspctf.gq
+    - 21.owaspctf.gq
+    - 22.owaspctf.gq
+    - 23.owaspctf.gq
+    - 24.owaspctf.gq
+    - 25.owaspctf.gq
+
+
+  1.owaspctf.gq:
+    build: ./001lfihashes/.
+    expose:
+    - "80"
+  2.owaspctf.gq:
+    build: ./002shoppingcart/.
+    expose:
+    - "80"
+    links:
+        - 002shoppingcartdb
+  002shoppingcartdb:
+    image: mysql:8.0
+    expose:
+        - "3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+        MYSQL_DATABASE: myDb
+        MYSQL_USER: not_brutforsable_user
+        MYSQL_PASSWORD: not_brutforsable_password
+        MYSQL_ROOT_PASSWORD: not_brutforsable_password
+    volumes:
+        - ./002shoppingcart/dump:/docker-entrypoint-initdb.d
+        - ./002shoppingcart/conf:/etc/mysql/conf.d
+  3.owaspctf.gq:
+    build: ./003fileupload/.
+    expose:
+    - "80"
+  4.owaspctf.gq:
+    build: ./004emoji/.
+    expose:
+    - "80"
+  5.owaspctf.gq:
+    build: ./005fileuploadtmp/.
+    expose:
+    - "80"
+  6.owaspctf.gq:
+    build: ./006hashcollision/.
+    expose:
+    - "80"
+  7.owaspctf.gq:
+    build: ./007roulette/.
+    expose:
+    - "80"
+  8.owaspctf.gq:
+    build: ./008ssrf/.
+    expose:
+    - "80"
+  9.owaspctf.gq:
+    build: ./009xxe/.
+    expose:
+    - "8080"
+  10.owaspctf.gq:
+    build: ./010base64/.
+    expose:
+    - "80"
+  11.owaspctf.gq:
+    build: ./011serealize/.
+    expose:
+    - "80"
+  12.owaspctf.gq:
+    build: ./012selectsql/.
+    expose:
+    - "80"
+    links:
+            - 012selectsqldb
+  012selectsqldb:
+    image: mysql:8.0
+    expose:
+        - "3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+        MYSQL_DATABASE: myDb
+        MYSQL_USER: not_brutforsable_user
+        MYSQL_PASSWORD: not_brutforsable_password
+        MYSQL_ROOT_PASSWORD: not_brutforsable_password
+    volumes:
+        - ./012selectsql/dump:/docker-entrypoint-initdb.d
+        - ./012selectsql/conf:/etc/mysql/conf.d
+  13.owaspctf.gq:
+    build: ./013captcha/.
+    expose:
+    - "80"
+  14.owaspctf.gq:
+    build: ./014hackinggame/.
+    expose:
+    - "80"
+  015googleauthdns:
+   image: vulhub/bind:latest
+   expose:
+    - "53/tcp"
+    - "53/udp"
+   volumes:
+    - ./015googleauth/named.conf.local:/etc/bind/named.conf.local
+    - ./015googleauth/vulhub.db:/etc/bind/vulhub.db
+  15.owaspctf.gq:
+    build: ./015googleauth/.
+    expose:
+        - "80"
+  16.owaspctf.gq:
+    build: ./016nginx/.
+    expose:
+    - "80"
+  17.owaspctf.gq:
+    build: ./017domxss/.
+    expose:
+    - "80"
+  18.owaspctf.gq:
+    build: ./018resetpass/.
+    expose:
+    - "80"
+  19.owaspctf.gq:
+    build: ./019insta/.
+    expose:
+    - "80"
+  20.owaspctf.gq:
+    build: ./020accesslog/.
+    expose:
+    - "80"
+  21.owaspctf.gq:
+    build: ./021guessthenumber/.
+    expose:
+    - "80"
+  22.owaspctf.gq:
+    build: ./022bloglfi/.
+    expose:
+    - "80"
+  23.owaspctf.gq:
+    build: ./023vb/.
+    expose:
+    - "80"
+  24.owaspctf.gq:
+    build: ./024apk/.
+    expose:
+    - "80"
+  25.owaspctf.gq:
+    build: ./025easysql/.
+    expose:
+    - "80"

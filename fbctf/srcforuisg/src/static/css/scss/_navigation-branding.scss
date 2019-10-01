@@ -1,0 +1,230 @@
+/* ==============================================================
+   * Navigation and Branding
+   *
+   * includes the header navigation, as well as the branding
+   ============================================================== */
+
+.fb-navigation {
+  @include flexbox;
+
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+
+  & > * {
+    @include flex(1 1 auto);
+  }
+
+  &.fb-main-nav > * {
+    @include flex(1 1 33.33%);
+  }
+
+  &.fb-gameboard-nav {
+    & > ul {
+      position: relative;
+
+      & > li {
+        display: inline-block;
+        position: relative;
+
+        & > a {
+          display: block;
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+
+        &:hover {
+          a:after {
+            height: 2px;
+            opacity: 1;
+
+            @include translate(0, 0px);
+          }
+
+          .subnav {
+            opacity: 1;
+            visibility: visible;
+
+            li {
+              height: 20px;
+              opacity: 1;
+              visibility: visible;
+
+              &:nth-child(1) {
+                @include transition(all 0.2s 0s);
+              }
+
+              &:nth-child(2) {
+                @include transition(all 0.2s 0.1s);
+              }
+
+              &:nth-child(3) {
+                @include transition(all 0.2s 0.2s);
+              }
+
+              &:nth-child(4) {
+                @include transition(all 0.2s 0.3s);
+              }
+
+              &:nth-child(5) {
+                @include transition(all 0.2s 0.4s);
+              }
+            }
+          }
+        }
+      }
+
+      .subnav {
+        // display: none;
+        position: absolute;
+        text-align: left;
+        padding-top: 10px;
+        opacity: 0;
+        visibility: hidden;
+
+        @include transition(all 0.2s 0s);
+
+        li {
+          padding-top: 6px;
+          visibility: hidden;
+          opacity: 0;
+          height: 0px;
+
+          @include transition(all 0.2s 0s);
+        }
+      }
+    }
+
+    ul.nav-left {
+      text-align: right;
+      padding-right: 20px;
+
+      .tutorial-step--navigation & {
+        z-index: 11;
+
+        li {
+          border-color: $teal-blue;
+
+          .subnav {
+            opacity: 1;
+            visibility: visible;
+
+            li {
+              height: 20px;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+
+    ul.nav-right {
+      text-align: left;
+      padding-left: 20px;
+
+      .tutorial-step--scoreboard & {
+        z-index: 11;
+      }
+    }
+  }
+
+  &.fb-main-nav ul {
+    @include flexbox;
+
+    li {
+      @include flex(0 1 33.33%);
+    }
+  }
+
+  li a {
+    @include purista-bold;
+
+    color: $teal-blue;
+    text-decoration: none;
+    font-size: $text-size;
+
+    &:hover {
+      color: $light-blue;
+    }
+  }
+
+  & > ul > li > a {
+    position: relative;
+
+    &.active {
+      color: $light-blue;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background: $teal-blue;
+      opacity: 0;
+      z-index: 2;
+
+      @include transition(all 0.3s);
+
+      @include translate(0, -8px);
+    }
+
+    &.active:after,
+    &:hover:after {
+      height: 2px;
+      opacity: 1;
+
+      @include translate(0, 0px);
+    }
+  }
+
+  @include break-max {
+    padding: 20px;
+  }
+}
+
+.branding {
+  @include purista-bold;
+
+  font-size: .7em;
+  position: relative;
+
+  .icon--social-facebook {
+    width: 14px;
+    height: 14px;
+  }
+
+  .loading & {
+    z-index: 11;
+  }
+
+  a {
+    color: $light-blue;
+  }
+
+  .branding-rules {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid $teal-blue;
+    border-bottom: 1px solid $teal-blue;
+
+    .gameboard--viewmode & {
+      background: rgba($main-blue, 0.8);
+    }
+  }
+
+  @include break-max {
+    .branding-el {
+      display: block;
+    }
+
+    .separator {
+      visibility: hidden;
+    }
+  }
+}

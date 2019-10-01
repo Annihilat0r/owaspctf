@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>HACKSYS the hacking game</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link href='https://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+<title>HACKSYS the hacking game</title>
+
+<audio autoplay loop>
+  <source src="" type="audio/mpeg">
+</audio>
+
+<div id="welcome-login">
+  <h1>Welcome to HACKSYS the hacking game!</h1>
+  <input id="login-input" type="text" placeholder="Hacker nickname">
+</div>
+
+<div id="terminal">
+    <div>Loading...<span id="blinking">_</span></div>
+</div>
+
+<div id="root">></div>
+<input id="input" type="text" placeholder="Enter your command here..." autofocus>
+
+<div id="time">Trace time: 0:00</div>
+
+<ol id="objectives">
+  Welcome to HACKSYS the hacking game.<br><br>
+  <div id="won">Congratulations! You are going to receive all the important conversations from this phone relay.</div>
+  <div id="lost">You got tracked down. You better run while you can... Computer autodistruction process will clean up the rest...</div><br>
+  Objectives:
+  <li id="help">Type 'help' in the console, at the bottom of the screen.</li>
+  <li id="list">Check the list of the currently available applications.</li>
+  <li id="scan">Scan you target (nmap bank.com).</li>
+  <li id="scan_vuln">Scan web application for vulnerabilities.</li>
+  <li id="hack">Hack web application using exploits.</li>
+  <li id="trojan">Send a trojan to the host you just hacked (send trojan).</li>
+  <li id="trojan2">Try to sniff Administrator's credentials.</li>
+  <li id="disconnect">Disconnect from the phone relay before you are traced down.</li>
+</ol>
+
+<footer>
+  &copy; Copyright 2014-2018 by bulanmaster. All rights reserved.
+</footer>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+/* ==============================================================
+   * Layout
+   *
+   * layout styles for columns and sections
+   ============================================================== */
+
+.fb-sprite {
+  height: 0;
+  width: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+.fb-viewport {
+  height: 100vh;
+
+  @include flexbox;
+
+  flex-direction: column;
+
+  &.admin-viewport {
+    flex-direction: row;
+  }
+
+  .admin-nav-bar {
+    @include flex(0 0 300px);
+  }
+
+  .fb-page {
+    @include flex(1 1 auto);
+
+    overflow: hidden;
+  }
+}
+
+.fb-page {
+  position: relative;
+
+  .full-height {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.fb-scroll {
+  overflow: auto;
+}
+
+.fb-container {
+  width: 100%;
+  max-width: 860px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+
+  .inner-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 640px;
+  }
+
+  &.container--small {
+    max-width: 640px;
+  }
+
+  &.container--large {
+    max-width: 1066px;
+  }
+}
+
+/**
+ * --secondary
+ */
+
+.fb-secondary {
+  & > div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  & > div + div {
+    margin-top: 40px;
+  }
+}
+
+/* --------------------------------------------
+ * --columns and rows
+ * -------------------------------------------- */
+
+.center-vertically {
+  @include flexbox;
+
+  @include align-center;
+}
+
+.fb-row-container {
+  @include flexbox;
+
+  flex-direction: column;
+
+  & > .row-fixed {
+    @include flex(0 0 auto);
+  }
+
+  & > .row-fluid {
+    @include flex(1 1 auto);
+
+    overflow: auto;
+
+    &.no-shrink {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.fb-column-container {
+  @include flexbox;
+
+  &.centered-columns {
+    @include align-center;
+  }
+
+  & > .col {
+    @include flex(1 1 auto);
+
+    &.col-pad {
+      padding: 20px;
+    }
+
+    &.col-shrink {
+      @include flex(0 1 auto);
+    }
+
+    &.col-grow {
+      @include flex(1 0 auto);
+    }
+
+    &.col-2-3 {
+      @include flex(0 1 66.6666%);
+    }
+
+    &.col-1-2 {
+      @include flex(0 1 50%);
+    }
+
+    &.col-1-3 {
+      @include flex(0 1 33.3333%);
+    }
+
+    &.col-1-4 {
+      @include flex(0 1 25%);
+    }
+  }
+
+  &.col-gutters {
+    justify-content: space-between;
+
+    & > .col.col-1-3 {
+      flex-basis: 30.667%;
+    }
+
+    & > .col.col-1-2 {
+      flex-basis: 48%;
+    }
+  }
+
+  & > .fb-secondary {
+    @include flex(1 0 400px);
+  }
+
+  &.fb-job {
+    header {
+      @include flex(0 0 220px);
+
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .job-description {
+      @include flex(1 1 auto);
+    }
+  }
+}
+
+/* --------------------------------------------
+ * --list styles
+ * -------------------------------------------- */
+
+.grid-list {
+  @include flexbox;
+
+  flex-wrap: wrap;
+
+  li {
+    @include flex(0 0 33.3333%);
+  }
+}
