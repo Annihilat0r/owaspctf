@@ -8,19 +8,19 @@ $translations = array(
   'Facebook CTF' =>
     'Facebook CTF',
   'Conquer the world' =>
-    'Захисти Україну',
+    'OWASP UKRAINE 2019 CTF',
   'Play' =>
     'Грати',
   'Welcome to the Facebook Capture the Flag Competition. By clicking "Play," you will be entered into the official CTF challenge. Good luck in your conquest.' =>
-    'Ласкаво просимо на змагання Capture the Flag. Натискаючи кнопку "Грати", ви братимете участь в офіційному змаганні CTF. Бажаємо успіхів!',
+    'Ласкаво просимо на змагання Capture the Flag. Натискаючи кнопку "Грати", ви братимете участь в офіційному змаганні OWASP UKRAINE 2019 CTF. Бажаємо успіхів!',
   'Get ready for the CTF to start and access the gameboard now!' =>
     'Приготуйтеся до початку CTF і отримайте доступ до ігрового поля!',
   'Gameboard' =>
     'Ігрове поле',
   'Register Team' =>
-    'Зареєструвати гравця',
+    'Зареєструвати команду',
   'Get ready for the CTF to start and register your team now!' =>
-    'Приготуйтеся до початку CTF і зареєструйтеся!',
+    'Приготуйтеся до початку CTF і зареєструй команду!',
   'Login' =>
     'Увійти',
   'Soon' =>
@@ -44,15 +44,15 @@ $translations = array(
   'Cooperation' =>
     'Взаємодопомога',
   'No cooperation between teams with independent accounts. Sharing of keys or providing revealing hints to other teams is cheating, don’t do it.' =>
-    'Забороняється співробітництво між гравцями. Поширення ключів і надання явних підказок іншим гравцям є шахрайством і заборонено.',
+    'Забороняється співробітництво між командами. Поширення ключів і надання явних підказок іншим командам є шахрайством і це заборонено.',
   'Attacking Scoreboard' =>
     'Табло атак',
   'No attacking the competition infrastructure. If bugs or vulns are found, please alert the competition organizers immediately.' =>
-    'Заборонені спроби атак на інфраструктуру змагання. У разі виявлення багів або вразливостей просимо негайно повідомити про них організаторам.',
+    'Заборонені спроби атак на інфраструктуру змагання. У разі виявлення багів або вразливостей просимо голосно не лаятися та негайно повідомити про них організаторам. У нас лапки ^_^.',
   'Sabotage' =>
     'Саботаж',
   'Absolutely no sabotaging of other competing teams, or in any way hindering their independent progress.' =>
-    'Строго заборонено шкодити іншим гравцям або яким-небудь чином заважати їх прогресу.',
+    'Строго заборонено шкодити іншим гравцям чи командам або яким-небудь чином заважати їх прогресу.',
   'Bruteforcing' =>
     'Атака повним перебором',
   'No brute forcing of challenge flag/ keys against the scoring site.' =>
@@ -78,9 +78,9 @@ $translations = array(
   'Token' =>
     'Токен',
   'Team Registration' =>
-    'Реєстрація Гравця',
+    'Реєстрація Команди',
   'Team Name' =>
-    'Нікнейм Гравця',
+    'Назва Команди',
   'Password' =>
     'Пароль',
   'Choose an Emblem' =>
@@ -98,17 +98,17 @@ $translations = array(
   'Not Available' =>
     'Недоступно',
   'Team Registration will be open soon, stay tuned!' =>
-    'Реєстрація Гравця буде скоро відкрита, залишайтеся на зв\'язку!',
+    'Реєстрація Команд буде скоро відкрита, залишайтеся на зв\'язку!',
   'Try Again' =>
     'Спробуйте Знову',
   'Select' =>
     'Вибрати',
   'Team Login' =>
-    'Вхід для Гравця',
+    'Вхід для Команди',
   'Please login here. If you have not registered, you may do so by clicking "Sign Up" below. ' =>
     'Будь ласка, виконайте вхід. Якщо ви не зареєструвалися, натисніть кнопку "Зареєструватися" нижче.',
   'Team Login will be open soon, stay tuned!' =>
-    'Вхід для Гравця буде скоро відкритий, залишайтеся на зв\'язку!',
+    'Вхід для Команди буде скоро відкритий, залишайтеся на зв\'язку!',
   'ERROR' =>
     'ПОМИЛКА',
   'Start Over' =>
