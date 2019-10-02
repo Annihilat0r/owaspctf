@@ -287,7 +287,7 @@ curl_exec($ch);
 curl_close($ch);
 }
 }
-print_r($_SERVER);
+
 
 ?>
 <!DOCTYPE html>
