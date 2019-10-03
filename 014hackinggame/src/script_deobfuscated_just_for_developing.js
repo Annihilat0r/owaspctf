@@ -1,4 +1,6 @@
+var previous_command = "";
 $(document).ready(function() {
+
   function generateRandomString(length) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_:\'|~";
@@ -28,6 +30,7 @@ function generateRandomHash() {
 return hashArray[Math.floor(Math.random()*hashArray.length)];
 }
   var divx = document.getElementById('terminal');
+
   /* Welcome screen */
   $('#welcome-login').animate({'opacity': '1', 'top': $(window).height()/2 - $('#welcome-login').height()/2 }, 3000);
 
@@ -139,9 +142,9 @@ window.setInterval(function() {
 
         if (connect === 1) {
           if (seconds < 10) {
-            $('#time').text('Being traced: ' + minutes + ':0' +seconds);
+            $('#time').text('Being traced: ' + minutes + ':0' +seconds + '  ');
           } else {
-            $('#time').text('Being traced: ' + minutes + ':' +seconds);
+            $('#time').text('Being traced: ' + minutes + ':' +seconds + '  ');
           }
           if (seconds < 59) {
             seconds++;
@@ -216,8 +219,17 @@ window.setInterval(function() {
         able = 1;
       }, 10000);
 
+      function checkKey(e) {
+
+               if(e.which === 38 && $('#input').val() === ''){
+                 
+                 $('#input').val(previous_command);
+
+               }}
+  document.onkeydown = checkKey;
       $('#input').keypress(function(e) {
           if(e.which === 13 && $(this).val() != '' && able === 1) {
+            previous_command = $(this).val();
             $('div span').remove();
             $('initial-root').remove();
 
@@ -420,4 +432,8 @@ window.setInterval(function() {
       });
     }
   });
+
+
+
+
 });
