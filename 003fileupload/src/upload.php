@@ -6,6 +6,23 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
+  if(isset($_POST['g-recaptcha-response'])){
+    $captcha=$_POST['g-recaptcha-response'];
+  }
+  if(!$captcha){
+    echo '<h2>Please check the the captcha form.</h2>';
+    header("Location: contact.php?status=bad&url=captcha_fail");
+    exit;
+  }
+  $secretKey = "6LedRrsUAAAAAGwOcORwwh9l4n2P5jdEMKCX4WrO";
+  $ip = $_SERVER['REMOTE_ADDR'];
+  // post request to server
+  $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+  $response = file_get_contents($url);
+  $responseKeys = json_decode($response,true);
+  // should return JSON with success as true
+  if($responseKeys["success"]) {
+
     $check = preg_match('/(.jpg|.jpeg|.png|.gif)/', $_FILES["fileToUpload"]["name"]);
     //print($check);
     if($check !== 0) {
@@ -26,7 +43,7 @@ if(isset($_POST["submit"])) {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-  }
+  }}
 
 
 ?>

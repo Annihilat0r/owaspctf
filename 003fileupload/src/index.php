@@ -5,7 +5,7 @@
     <title>Creating an Image Zoom Library With Vanilla JavaScript</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="demo.css">
     <link rel="stylesheet" href="vanilla-zoom/vanilla-zoom.css">
@@ -22,6 +22,7 @@
           <form action="upload.php" method="post" enctype="multipart/form-data">
       Select image to upload:
       <input type="file" name="fileToUpload" id="fileToUpload">
+      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
       <input type="submit" value="Upload Image" name="submit">
   </form></h3>
 
