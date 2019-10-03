@@ -22,8 +22,10 @@
           <form action="upload.php" method="post" enctype="multipart/form-data">
       Select image to upload:
       <input type="file" name="fileToUpload" id="fileToUpload">
-      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
+
       <input type="submit" value="Upload Image" name="submit">
+
+      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
   </form></h3>
 
         <p>Select an image by clicking on the previews. Hover on the large image to inspect it in detail.</p>
