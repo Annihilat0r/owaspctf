@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   if(!$captcha){
     echo '<h2>Please check the the captcha form.</h2>';
-    header("Location: contact.php?status=bad&url=captcha_fail");
+    header("Location: /");
     exit;
   }
   $secretKey = "6LedRrsUAAAAAGwOcORwwh9l4n2P5jdEMKCX4WrO";
