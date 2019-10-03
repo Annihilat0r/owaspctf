@@ -2,6 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <script src='https://www.google.com/recaptcha/api.js' async defer></script>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://www.instagram.com/ ; script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self'; img-src * data:; media-src *; frame-src https://www.google.com/recaptcha/">
   <title>Instagram downloader</title>
   <link rel="stylesheet" href="./style.css">
