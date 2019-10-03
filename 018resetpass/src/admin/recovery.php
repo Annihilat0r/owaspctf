@@ -265,6 +265,8 @@ $flag="";
 $checkResult = $ga->verifyCode($secret, $oneCode, 1);    // 2 = 2*30sec clock tolerance
 if ($checkResult) {
   $flag="<center>FLAG{I_hope_it_was_not_a_bruteforce}</center><br>";
+}else{
+  $flag="<center>Token has expired</center><br>";
 }}
 
 if(isset($_POST["go"])){

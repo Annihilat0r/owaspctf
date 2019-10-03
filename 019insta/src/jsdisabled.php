@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.instagram.com/ 3v1l.cf; style-src 'self'; img-src * data:; media-src *">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://www.instagram.com/ ; script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self'; img-src * data:; media-src *; frame-src https://www.google.com/recaptcha/">
   <title>Instagram downloader</title>
   <link rel="stylesheet" href="./style.css">
 
@@ -15,7 +15,7 @@
     <button class="search">Render</button>
 	</header>
 	<section class="result">
-				<?php 
+				<?php
 error_reporting(E_ALL);
 include_once("lib_simple_html_dom.php");
 
@@ -39,7 +39,7 @@ if(empty($_GET['url'])){
 	echo('<img id="instaImg" src="'.$img.'">');
 }
 	echo('<p>'.htmlspecialchars_decode($description).'</p>');
-	
+
 }
 ?>
 
@@ -51,6 +51,7 @@ if(empty($_GET['url'])){
 		<form action="feedback.php" method="post">
 			<input type="text" name="link">
 			<input type="submit" name="">
+      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
 		</form>
 </footer>
 </main>

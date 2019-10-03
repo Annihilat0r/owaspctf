@@ -3,7 +3,7 @@ var body = '<main>	<header class="navbar">';
     body+='<button class="search" id="extractHtml">Render</button></header>';
 	body+='<section class="result"><div class="no-image"></div>';
     body+='<p>On this page you can download images or <b>public</b> videos from Instagram accounts, in the application you can go to the image and to the right <b>(the 3 points)</b> in the menu you give it to copy image and paste it or if you are on the computer you just have to Copy the link.</p><p>To save an image from the mobile phone, press and hold until the menu comes out and then download the image if it is from the computer, simply right click save image.</p>';
-body+='<p>To save a video from your mobile, click on the 3 dots and download and if you are on the computer, right click and save as.</p><p>This page does not save any information do not worry :).</p></section><footer>Made width ♥ <br>    If your link does not work - send it to me    <form action="feedback.php"></form>    <form action="feedback.php" method="post">      <input type="text" name="link">      <input type="submit" name="">    </form></footer></main>';
+body+='<p>To save a video from your mobile, click on the 3 dots and download and if you are on the computer, right click and save as.</p><p>This page does not save any information do not worry :).</p></section><footer>Made width ♥ <br>    If your link does not work - send it to me    <form action="feedback.php"></form>    <form action="feedback.php" method="post">      <input type="text" name="link">     <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw"></div> <input type="submit" name="">    </form></footer></main>';
 // insert in body
 document.body.innerHTML = body;
 
@@ -38,9 +38,9 @@ function createImg(data){
   i.id = "instaImg";
   i.src = data.content;
   render.innerHTML = ""; // clear body
-  render.appendChild(i); // append image  
+  render.appendChild(i); // append image
   }
-function createDescription(data){  
+function createDescription(data){
   // create info
   var info = document.createElement('p');
   info.innerHTML = data.content;
@@ -93,4 +93,3 @@ if (location.hash){
   document.querySelector('input').value="https://www.instagram.com/"+location.hash.substring(1);
   extractHtml();
 }
-
