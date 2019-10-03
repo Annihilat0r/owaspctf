@@ -25,7 +25,7 @@
 
       <input type="submit" value="Upload Image" name="submit">
 
-      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
+      <center><div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw"></center>
   </form></h3>
 
         <p>Select an image by clicking on the previews. Hover on the large image to inspect it in detail.</p>

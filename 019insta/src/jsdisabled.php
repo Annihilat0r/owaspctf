@@ -52,7 +52,7 @@ if(empty($_GET['url'])){
 		<form action="feedback.php" method="post">
 			<input type="text" name="link">
 			<input type="submit" name="">
-      <div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw">
+      <center><div class="g-recaptcha" data-sitekey="6LedRrsUAAAAAEvOjJlYFYWEcN4aN24owAFQ-1kw"></center>
 		</form>
 </footer>
 </main>

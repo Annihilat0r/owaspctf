@@ -1,5 +1,5 @@
 <?php
-
+echo("<h3>Short FileName read</h3>");
 $filename = pathinfo($_REQUEST["file"])["filename"].".php";
 
 if($_REQUEST["file"]){

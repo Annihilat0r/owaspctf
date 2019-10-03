@@ -46,7 +46,7 @@ def client_thread(conn, ip, port, MAX_BUFFER_SIZE = 4096):
         if tries > 30:
             break
 
-    conn.sendall(b"Have a nice party at OWASP Ukraine! \n")
+    conn.sendall(f"Have a nice party at OWASP Ukraine! The Number was: {RANDOM_NUMBER} \n".encode())
     conn.close()  # close connection
     print('Connection ' + ip + ':' + port + " ended")
 
