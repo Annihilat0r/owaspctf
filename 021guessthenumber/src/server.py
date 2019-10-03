@@ -8,7 +8,7 @@ import random
 from threading import Thread
 
 
-PORT = int(os.environ.get("PORT", 80))
+PORT = int(os.environ.get("PORT", 8000))
 flag = open('flag', 'r').readline()
 pc =  open('pc.txt', 'r').readline()
 
@@ -70,7 +70,7 @@ def start_server():
 
     # for handling task in separate jobs we need threading
 
-    # this will make an infinite loop needed for 
+    # this will make an infinite loop needed for
     # not reseting server for every client
     while True:
         conn, addr = soc.accept()
@@ -83,4 +83,4 @@ def start_server():
             traceback.print_exc()
     soc.close()
 
-start_server()  
+start_server()

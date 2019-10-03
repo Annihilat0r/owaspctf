@@ -103,7 +103,7 @@ var loader = document.getElementById('loader')
 <?php
 $_SESSION['firs']=rand(1,8+($difficulty));
 $_SESSION['second']=rand(1,8+(2*$difficulty));
-$_SESSION['third']=rand(1,9);
+$_SESSION['third']=rand(2,9);
 $_SESSION['four']=rand(1,8+(3*$difficulty));
 $_SESSION['result']=((intval($_SESSION['firs'])+intval($_SESSION['second'])) * intval($_SESSION['third']))-intval($_SESSION['four']);
 $_SESSION['time']=time()+6;

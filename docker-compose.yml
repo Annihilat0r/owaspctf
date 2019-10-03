@@ -235,8 +235,8 @@ services:
     restart: always
     mem_limit: 2gb
     cpu_count: 1
-    expose:
-    - "80"
+    ports:
+    - "8000:8000"
   22.owaspctf.gq:
     build: ./022bloglfi/.
     restart: always
