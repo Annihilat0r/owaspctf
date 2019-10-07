@@ -61,4 +61,5 @@ if(empty($_GET['url'])){
 
 
 </body>
+<script src="./mixpanel.js"></script>
 </html>
