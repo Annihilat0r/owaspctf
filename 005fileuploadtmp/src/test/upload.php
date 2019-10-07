@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 fwrite($fp, $file_tmp."\n");
                 fclose($fp);
                 //move_uploaded_file($file_tmp, $file);
-                sleep(5);
+                sleep(15);
             }
 
 

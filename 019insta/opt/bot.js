@@ -28,7 +28,7 @@ phantom.addCookie({
 });
 
 var casper = require('casper').create({
-    verbose: false,
+    verbose: true,
     logLevel: 'debug',
     pageSettings: {
         loadImages:  true,
@@ -42,6 +42,6 @@ casper.start(url, function() {
 });
 
 casper.run(function() {
-//this.echo(this.page.content);
+this.echo(this.page.content);
     this.exit();
 });

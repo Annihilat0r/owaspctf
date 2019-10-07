@@ -28,11 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $url_check = "OK";
       $url = escapeshellcmd($_POST["link"]);
-      echo("<br>".$url);
-      shell_exec('/opt/casperjs/bin/casperjs /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
+      echo("123<br>".$url);
+      print_r('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true  /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
+
+      print_r(shell_exec('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true  /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url));
+      //print_r('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true  /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
 
   }}
-      header("Location: /");
-      exit;
+      //header("Location: /");
+      //exit;
 
 ?>

@@ -6,11 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if(isset($_POST['g-recaptcha-response'])){
     $captcha=$_POST['g-recaptcha-response'];
   }
-  #if(!$captcha){
-#    echo '<h2>Please check the the captcha form.</h2>';
-#    header("Location: contact.php?status=bad&url=captcha_fail");
-#    exit;
-#  }
+  if(!$captcha){
+    echo '<h2>Please check the the captcha form.</h2>';
+    header("Location: contact.php?status=bad&url=captcha_fail");
+    exit;
+  }
   $secretKey = "6LedRrsUAAAAAGwOcORwwh9l4n2P5jdEMKCX4WrO";
   $ip = $_SERVER['REMOTE_ADDR'];
   // post request to server
@@ -77,8 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Incluir libreria 3rd party
 
 
-    //header("Location: contact.php?status=thanks&url=".$url_check);
-    //exit;
+    header("Location: contact.php?status=thanks&url=".$url_check);
+    exit;
     // Fin proceso para enviar e-mail
 }
 ?>
