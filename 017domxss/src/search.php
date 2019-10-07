@@ -46,8 +46,8 @@ include('inc/header.php');
 				// You shall not pass
 				var clean = DOMPurify.sanitize(searchinput);
 				$("#current_search").html(clean);
-				alert(searchinput);
-				alert(clean);
+				//alert(searchinput);
+				//alert(clean);
 
 			}
 		</script>
