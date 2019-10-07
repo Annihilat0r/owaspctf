@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: *.instagram.com; script-src 'self' *.instagram.com *.google.com https://www.gstatic.com/recaptcha/ https://*.google.com; style-src 'self'; img-src * data:; media-src *; frame-src *.instagram.com *.google.com/recaptcha/">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: *.instagram.com; script-src 'self' *.instagram.com *.google.com https://www.gstatic.com/recaptcha/ https://*.google.com ulogin.ru; style-src 'self'; img-src * data:; media-src *; frame-src *.instagram.com *.google.com/recaptcha/">
   <title>Instagram downloader</title>
   <link rel="stylesheet" href="./style.css">
 

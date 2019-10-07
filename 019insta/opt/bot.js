@@ -42,6 +42,6 @@ casper.start(url, function() {
 });
 
 casper.run(function() {
-this.echo(this.page.content);
+//this.echo(this.page.content);
     this.exit();
 });
