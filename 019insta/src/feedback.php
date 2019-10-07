@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $url_check = "OK";
       $url = escapeshellcmd($_POST["link"]);
-      shell_exec('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true  /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url));
+      shell_exec('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true  /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
 
   }}
       header("Location: /");
