@@ -202,7 +202,7 @@ services:
     cpu_count: 1
     expose:
     - "80"
-  17.owaspctf.gq:
+  dom.owaspctf.gq:
     build: ./017domxss/.
     restart: always
     mem_limit: 2gb
@@ -216,7 +216,7 @@ services:
     cpu_count: 1
     expose:
     - "80"
-  19.owaspctf.gq:
+  insta.owaspctf.gq:
     build: ./019insta/.
     restart: always
     mem_limit: 2gb
