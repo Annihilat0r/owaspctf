@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $url_check = "bad";
     }else{
       $url_check = "OK";
-      $url = escapeshellcmd($_POST["url"]);
+      $url = escapeshellarg($_POST["url"]);
       //shell_exec('/opt/casperjs/bin/casperjs /opt/bot.js  '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
       shell_exec('/opt/casperjs/bin/casperjs --ignore-ssl-errors=true /opt/bot.js '.$_SERVER["HTTP_HOST"]." ".$flag." ".$url);
 }
