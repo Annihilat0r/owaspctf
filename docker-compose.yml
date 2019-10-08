@@ -31,9 +31,9 @@ services:
     - 015googleauthdns
     - 15.owaspctf.gq
     - 16.owaspctf.gq
-    - 17.owaspctf.gq
+    - dom.owaspctf.gq
     - 18.owaspctf.gq
-    - 19.owaspctf.gq
+    - insta.owaspctf.gq
     - 20.owaspctf.gq
     - 21.owaspctf.gq
     - 22.owaspctf.gq
