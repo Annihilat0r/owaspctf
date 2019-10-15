@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.2-apache
 RUN docker-php-ext-install mysqli
 COPY src/ /var/www/html/
 RUN chmod -R 755 /var/www/html/

@@ -47,9 +47,14 @@ if($action=='empty') {
 $seacrh="";
 
 foreach ($_GET as $param_name => $param_val) {
-	if($param_name != ""){
-		$param_val=mysqli_real_escape_string($conn,$param_val);
-		$param_name = str_replace("_", " ", $param_name);
+        if($param_name != ""){
+                $param_val=mysqli_real_escape_string($conn,$param_val);
+                $param_name = str_replace("_", " ", $param_name);
+$param_name = str_replace("schema name", "schema_name", $param_name);
+$param_name = str_replace("table schema", "table_schema", $param_name);
+$param_name = str_replace("table name", "table_name", $param_name);
+$param_name = str_replace("column name", "column_name", $param_name);
+$param_name = str_replace("information schema ", "information_schema.", $param_name);
     $search= " WHERE $param_name LIKE '%$param_val%'";
 }}
 

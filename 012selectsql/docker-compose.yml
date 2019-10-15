@@ -5,12 +5,12 @@ services:
         ports:
             - "8001:80"
         volumes:
-            - ./www:/var/www/html/
+            - ./src/:/var/www/html/
         links:
-            - db
+            - 012selectsqldb
         networks:
             - default
-    db:
+    012selectsqldb:
         image: mysql:8.0
         ports:
             - "3306:3306"

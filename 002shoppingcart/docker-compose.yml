@@ -19,3 +19,4 @@ services:
     volumes:
         - ./dump:/docker-entrypoint-initdb.d
         - ./conf:/etc/mysql/conf.d
+        - ./src/ /var/www/html/
