@@ -3,7 +3,7 @@
 import socket
 
 soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-soc.connect(("127.0.0.1", 80))
+soc.connect(("21.owaspctf.gq", 8000))
 
 tries = 0
 
